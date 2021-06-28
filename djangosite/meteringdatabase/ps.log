@@ -1,0 +1,108 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.7  1.2 168584 12652 ?        Ss   15:25   0:03 /sbin/init
+root           2  0.0  0.0      0     0 ?        S    15:25   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   15:25   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   15:25   0:00 [rcu_par_gp]
+root           5  0.0  0.0      0     0 ?        I    15:25   0:00 [kworker/0:0-events]
+root           6  0.0  0.0      0     0 ?        I<   15:25   0:00 [kworker/0:0H-kblockd]
+root           9  0.0  0.0      0     0 ?        I<   15:25   0:00 [mm_percpu_wq]
+root          10  0.0  0.0      0     0 ?        S    15:25   0:00 [ksoftirqd/0]
+root          11  0.0  0.0      0     0 ?        I    15:25   0:00 [rcu_sched]
+root          12  0.0  0.0      0     0 ?        S    15:25   0:00 [migration/0]
+root          13  0.0  0.0      0     0 ?        S    15:25   0:00 [cpuhp/0]
+root          14  0.0  0.0      0     0 ?        S    15:25   0:00 [kdevtmpfs]
+root          15  0.0  0.0      0     0 ?        I<   15:25   0:00 [netns]
+root          16  0.0  0.0      0     0 ?        S    15:25   0:00 [rcu_tasks_kthre]
+root          17  0.0  0.0      0     0 ?        S    15:25   0:00 [kauditd]
+root          18  0.0  0.0      0     0 ?        S    15:25   0:00 [xenbus]
+root          19  0.0  0.0      0     0 ?        S    15:25   0:00 [xenwatch]
+root          20  0.0  0.0      0     0 ?        S    15:25   0:00 [khungtaskd]
+root          21  0.0  0.0      0     0 ?        S    15:25   0:00 [oom_reaper]
+root          22  0.0  0.0      0     0 ?        I<   15:25   0:00 [writeback]
+root          23  0.0  0.0      0     0 ?        S    15:25   0:00 [kcompactd0]
+root          24  0.0  0.0      0     0 ?        SN   15:25   0:00 [ksmd]
+root          25  0.0  0.0      0     0 ?        SN   15:25   0:00 [khugepaged]
+root          71  0.0  0.0      0     0 ?        I<   15:25   0:00 [kintegrityd]
+root          72  0.0  0.0      0     0 ?        I<   15:25   0:00 [kblockd]
+root          73  0.0  0.0      0     0 ?        I<   15:25   0:00 [blkcg_punt_bio]
+root          74  0.0  0.0      0     0 ?        I<   15:25   0:00 [tpm_dev_wq]
+root          75  0.0  0.0      0     0 ?        I<   15:25   0:00 [ata_sff]
+root          76  0.0  0.0      0     0 ?        I<   15:25   0:00 [md]
+root          77  0.0  0.0      0     0 ?        I<   15:25   0:00 [edac-poller]
+root          78  0.0  0.0      0     0 ?        I<   15:25   0:00 [devfreq_wq]
+root          79  0.0  0.0      0     0 ?        S    15:25   0:00 [watchdogd]
+root          80  0.0  0.0      0     0 ?        I    15:25   0:00 [kworker/u30:1-events_unbound]
+root          82  0.0  0.0      0     0 ?        S    15:25   0:00 [kswapd0]
+root          83  0.0  0.0      0     0 ?        S    15:25   0:00 [ecryptfs-kthrea]
+root          85  0.0  0.0      0     0 ?        I<   15:25   0:00 [kthrotld]
+root          86  0.0  0.0      0     0 ?        I<   15:25   0:00 [nvme-wq]
+root          87  0.0  0.0      0     0 ?        I<   15:25   0:00 [nvme-reset-wq]
+root          88  0.0  0.0      0     0 ?        I<   15:25   0:00 [nvme-delete-wq]
+root          89  0.0  0.0      0     0 ?        S    15:25   0:00 [scsi_eh_0]
+root          90  0.0  0.0      0     0 ?        I<   15:25   0:00 [scsi_tmf_0]
+root          91  0.0  0.0      0     0 ?        S    15:25   0:00 [scsi_eh_1]
+root          92  0.0  0.0      0     0 ?        I<   15:25   0:00 [scsi_tmf_1]
+root          93  0.0  0.0      0     0 ?        I    15:25   0:00 [kworker/u30:2-events_power_efficient]
+root          94  0.0  0.0      0     0 ?        I<   15:25   0:00 [kworker/0:1H-kblockd]
+root          95  0.0  0.0      0     0 ?        I<   15:25   0:00 [ipv6_addrconf]
+root         104  0.0  0.0      0     0 ?        I<   15:25   0:00 [kstrp]
+root         107  0.0  0.0      0     0 ?        I<   15:25   0:00 [kworker/u31:0]
+root         120  0.0  0.0      0     0 ?        S    15:25   0:00 [jbd2/xvda1-8]
+root         121  0.0  0.0      0     0 ?        I<   15:25   0:00 [ext4-rsv-conver]
+root         160  0.0  1.2  51636 12384 ?        S<s  15:25   0:00 /lib/systemd/systemd-journald
+root         178  0.0  0.0   2488   580 ?        S    15:25   0:00 bpfilter_umh
+root         251  0.0  0.5  19024  5396 ?        Ss   15:25   0:00 /lib/systemd/systemd-udevd
+root         262  0.0  0.0      0     0 ?        I<   15:25   0:00 [cryptd]
+root         326  0.0  0.0      0     0 ?        I<   15:25   0:00 [kaluad]
+root         327  0.0  0.0      0     0 ?        I<   15:25   0:00 [kmpath_rdacd]
+root         328  0.0  0.0      0     0 ?        I<   15:25   0:00 [kmpathd]
+root         329  0.0  0.0      0     0 ?        I<   15:25   0:00 [kmpath_handlerd]
+root         330  0.0  1.7 280188 17980 ?        SLsl 15:25   0:00 /sbin/multipathd -d -s
+root         339  0.0  0.0      0     0 ?        S<   15:25   0:00 [loop0]
+root         341  0.0  0.0      0     0 ?        S<   15:25   0:00 [loop1]
+root         343  0.0  0.0      0     0 ?        S<   15:25   0:00 [loop2]
+root         345  0.0  0.0      0     0 ?        S<   15:25   0:00 [loop3]
+root         348  0.0  0.0      0     0 ?        S<   15:25   0:00 [loop4]
+root         350  0.0  0.0      0     0 ?        S<   15:25   0:00 [loop5]
+root         351  0.0  0.0      0     0 ?        S<   15:25   0:00 [loop6]
+root         354  0.0  0.0      0     0 ?        S<   15:25   0:00 [loop7]
+systemd+     390  0.0  0.6  90396  6208 ?        Ssl  15:25   0:00 /lib/systemd/systemd-timesyncd
+root         391  0.0  0.0      0     0 ?        I    15:25   0:00 [kworker/0:3-events]
+systemd+     449  0.0  0.7  26880  7572 ?        Ss   15:25   0:00 /lib/systemd/systemd-networkd
+systemd+     452  0.0  1.1  24320 11604 ?        Ss   15:26   0:00 /lib/systemd/systemd-resolved
+root         491  0.0  0.0      0     0 ?        I    15:26   0:00 [kworker/u30:3-events_power_efficient]
+root         494  0.0  0.9 241020  9140 ?        Ssl  15:26   0:00 /usr/lib/accountsservice/accounts-daemon
+root         495  0.0  0.0   2540   728 ?        Ss   15:26   0:00 /usr/sbin/acpid
+root         513  0.0  0.2   8536  2880 ?        Ss   15:26   0:00 /usr/sbin/cron -f
+message+     514  0.0  0.4   7612  4304 ?        Ss   15:26   0:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root         526  0.0  0.5  13112  5388 ?        Ss   15:26   0:00 /usr/sbin/apache2 -k start
+ubuntu       527  0.0  1.0 221928 10744 ?        Sl   15:26   0:00 /usr/sbin/apache2 -k start
+www-data     528  0.0  1.1 762900 11100 ?        Sl   15:26   0:00 /usr/sbin/apache2 -k start
+www-data     529  0.0  1.1 762836 11104 ?        Sl   15:26   0:00 /usr/sbin/apache2 -k start
+root         531  0.0  1.6  29256 16800 ?        Ss   15:26   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+syslog       532  0.0  0.4 224484  4384 ?        Ssl  15:26   0:00 /usr/sbin/rsyslogd -n -iNONE
+root         534  0.1  1.8 640452 18492 ?        Ssl  15:26   0:00 /snap/amazon-ssm-agent/2996/amazon-ssm-agent
+root         545  0.1  2.7 627540 28056 ?        Ssl  15:26   0:00 /usr/lib/snapd/snapd
+root         555  0.0  0.7  16812  7848 ?        Ss   15:26   0:00 /lib/systemd/systemd-logind
+daemon       577  0.0  0.2   3792  2148 ?        Ss   15:26   0:00 /usr/sbin/atd -f
+root         596  0.0  0.3   6808  3036 ?        Ss   15:26   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root         670  0.0  0.2   7352  2228 ttyS0    Ss+  15:26   0:00 /sbin/agetty -o -p -- \u --keep-baud 115200,38400,9600 ttyS0 vt220
+root         756  0.0  0.6  12168  6704 ?        Ss   15:26   0:00 sshd: /usr/sbin/sshd -D -o AuthorizedKeysCommand /usr/share/ec2-instance-connect/eic_run_authorized_keys %u %f -o AuthorizedKeysCommandUser ec2-instance-connect [listener] 1 of 10-100 startups
+root         762  0.0  0.1   5828  1800 tty1     Ss+  15:26   0:00 /sbin/agetty -o -p -- \u --noclear tty1 linux
+root         770  0.0  0.9 236412  9092 ?        Ssl  15:26   0:00 /usr/lib/policykit-1/polkitd --no-debug
+root         780  0.0  1.9 108076 19436 ?        Ssl  15:26   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+root         794  0.0  0.7  13772  7672 ?        Ss   15:26   0:00 sshd: ubuntu [priv]
+ubuntu       920  0.0  0.9  18448  9632 ?        Ss   15:26   0:00 /lib/systemd/systemd --user
+ubuntu       921  0.0  0.3 103224  3372 ?        S    15:26   0:00 (sd-pam)
+ubuntu      1017  0.0  0.5  13904  5548 ?        S    15:26   0:00 sshd: ubuntu@pts/0
+ubuntu      1018  0.0  0.5  10180  5252 pts/0    Ss   15:26   0:00 -bash
+root        1028  0.1  2.5 723816 25516 ?        Sl   15:26   0:00 /snap/amazon-ssm-agent/2996/ssm-agent-worker
+ubuntu      1066  0.0  0.4  12180  4460 ?        Ss   15:29   0:00 apache2 (mod_wsgi-express) -f /home/ubuntu/mod_wsgi-express-8000/httpd.conf -DMOD_WSGI_MPM_ENABLE_EVENT_MODULE -DMOD_WSGI_MPM_EXISTS_EVENT_MODULE -DMOD_WSGI_MPM_EXISTS_WORKER_MODULE -DMOD_WSGI_MPM_EXISTS_PREFORK_MODULE -k start
+ubuntu      1067  0.5 11.6 567816 116408 ?       Sl   15:29   0:01 (wsgi:localhost:8000:1000) -f /home/ubuntu/mod_wsgi-express-8000/httpd.conf -DMOD_WSGI_MPM_ENABLE_EVENT_MODULE -DMOD_WSGI_MPM_EXISTS_EVENT_MODULE -DMOD_WSGI_MPM_EXISTS_WORKER_MODULE -DMOD_WSGI_MPM_EXISTS_PREFORK_MODULE -k start
+ubuntu      1068  0.0  0.3 539840  3872 ?        Sl   15:29   0:00 apache2 (mod_wsgi-express) -f /home/ubuntu/mod_wsgi-express-8000/httpd.conf -DMOD_WSGI_MPM_ENABLE_EVENT_MODULE -DMOD_WSGI_MPM_EXISTS_EVENT_MODULE -DMOD_WSGI_MPM_EXISTS_WORKER_MODULE -DMOD_WSGI_MPM_EXISTS_PREFORK_MODULE -k start
+ubuntu      1091  0.0  0.3 539832  3844 ?        Sl   15:29   0:00 apache2 (mod_wsgi-express) -f /home/ubuntu/mod_wsgi-express-8000/httpd.conf -DMOD_WSGI_MPM_ENABLE_EVENT_MODULE -DMOD_WSGI_MPM_EXISTS_EVENT_MODULE -DMOD_WSGI_MPM_EXISTS_WORKER_MODULE -DMOD_WSGI_MPM_EXISTS_PREFORK_MODULE -k start
+root        1128  0.0  0.6  12168  6876 ?        Ss   15:31   0:00 sshd: [accepted]
+root        1159  0.0  0.3   8880  3808 pts/0    S    15:32   0:00 /bin/bash /var/lib/dpkg/info/mysql-server-8.0.postinst configure 8.0.22-0ubuntu0.20.04.3
+root        1205  0.0  0.0      0     0 ?        I    15:32   0:00 [kworker/0:1]
+mysql       1304  1.6 36.1 1283588 362076 pts/0  Sl   15:33   0:00 mysqld --user=mysql --init-file=/var/lib/mysql-files/tmp.oy1YQh4AZc --socket=/tmp/tmp.cp59XPtE3Y/mysqld.sock --pid-file=/tmp/tmp.cp59XPtE3Y/mysqld.pid
+ubuntu      1361  0.0  0.3  10608  3388 pts/0    R+   15:33   0:00 ps aux

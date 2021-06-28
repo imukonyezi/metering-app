@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Add here details of the job</h1>
+ <form action="{% url 'store_newjob' %}" method="POST" name="job_form" id="job_form" class="form" enctype="multipart/form-data">
+       {% csrf_token %}
+     <label for="">Meter No:</label>
+     <br>
+     <input type="text" name="job_meter" id="job_meter">
+     <br>
+     <br>
+      <label for="">Feeder Name:</label>
+     <br>
+     <input type="text" name="feeder" id="feeder">
+     <br>
+     <br>
+     <label for="">Job Description</label>
+     <br>
+     <br>
+     <select name="job_desc" id="job_desc">
+         <option value="" selected disabled>Please select nature of work</option>
+         <option value="commision">Commissioning</option>
+         <option value="audit">Meter Audit</option>
+         <option value="audit">Others</option>
+     </select>
+     <br>
+     <br>
+     <label for="">Description of Works:</label>
+     <br>
+        <br>
+     <textarea name="job_details" id="job_details" cols="30" rows="6"></textarea>
+     <br>
+     <br>
+     <label for="" style="font-size:2em;align:center;">Attachments</label>
+     <br>
+     <br>
+     <label for="">CT Analysis</label>
+     <input type="file"  style="font-size:1.1em;" id="file_1" name="file_1">
+     <br>
+     <br>
+     <label for="">VT Analysis</label>
+     <input type="file"  id="file_2" name="file_2">
+     <br>
+     <br>
+       <label for="">Energy_Meter_Analysis</label>
+     <input type="file"  id="file_3" name="file_3">
+     <br>
+     <br>
+       <label for="">Field Report</label>
+     <input type="file" id="file_4" name="file_4">
+     <br>
+     <br>
+     <button type="submit">Submit</button>
+ </form>
+
+</body>
+</html>
+<style>
+    form{margin:auto;}
+    form input{width:30%;font-size:1.2em;}
+    form label{font-size:1.5em;}
+    form select,textarea{font-size:1.2em;width:30%;}
+    form button{width:20%;margin:1%;font-size:1.5em;padding:5px;border:2px solid blue;}
+    form button:hover{color:white; background:blue; border:crimson;}
+</style>

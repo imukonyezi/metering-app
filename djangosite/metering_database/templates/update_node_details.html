@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="all_forms" id="all_forms">
+      <form action="" method="POST" name="lxc" id="lxc" class="form">
+          {% csrf_token %}
+       <label for="" id="mt_lb">Select Meter Category:</label>
+     <select name="meter_cat" id="meter_cat" style="width:20%;" >
+            <option value=""selected disabled>Select category</option>
+            <option value="sub">Substation Meter</option>
+             <option value="ipp">IPP Meter</option>
+             <option value="stand">Standalone Meter</option>
+        </select>
+        <br>
+        <br>
+    </form>
+
+<!--    SUBSTATION NODE UPDATE FORM-->
+    <form action="{% url 'EM_sub_details' %}" method="POST" name="sub_det" id="sub_det" class="form" enctype="multipart/form-data">
+          {% csrf_token %}
+        <br>
+        <br>
+          <label for="" >Select Substation:</label>
+     <select name="sub_list" id="sub_list" style="width:25%;" >
+            <option value=""selected disabled>Select substation</option>
+        </select>
+        <label for="" >Feeder Name:</label>
+        <select name="feed_name" id="feed_name" >
+            <option value=""selected disabled>Select feeder</option>
+        </select>
+        <br>
+        <br>
+        <br>
+        <div id="div_update_part">
+            <label for="">Select Part to Update:</label>
+            <select name="update_part" id="update_part">
+            <option value="" selected disabled>Select Part to Update</option>
+            <option value="part_1">Location</option>
+            <option value="part_2">Feeder Details and Distributors</option>
+            <option value="part_3">CT & VT Details</option>
+            <option value="part_4">Main Energy Meter Details</option>
+            <option value="part_5">Check Energy Meter Details</option>
+        </select>
+        </div>
+        <br>
+        <br>
+
+    </form>
+
+<!--    IPP FORM-->
+        <form action="{% url 'EM_ipp_details' %}" method="POST" name="ipp_det" id="ipp_det" class="form" enctype="multipart/form-data">
+          {% csrf_token %}
+            <br>
+            <br>
+          <label for="" >Select IPP:</label>
+     <select name="ipp_list" id="ipp_list" style="width:20%;" >
+            <option value=""selected disabled>Select IPP</option>
+        </select>
+        <label for="" >Feeder Name:</label>
+        <select name="feed_name_ipp" id="feed_name_ipp" >
+            <option value=""selected disabled>Select feeder</option>
+
+        </select>
+        <br>
+            <br>
+             <label for="">Main Meter Config File</label>
+        <input type="file" id="main_config_ipp" name="main_config_ipp" >
+        <br>
+        <label for="">Check Meter Config File</label>
+        <input type="file" id="check_config_ipp" name="check_config_ipp" >
+        <br>
+            <br>
+        <button type="submit">Submit</button>
+            <br>
+            <br>
+    </form>
+
+    <!--STANDALONE FORM-->
+    <form action="{% url 'EM_stand_details' %}" method="POST" name="stand_det" id="stand_det" class="form" enctype="multipart/form-data">
+          {% csrf_token %}
+        <br>
+        <br>
+          <label for="" >Select District:</label>
+     <select name="dist_list" id="dist_list" style="width:20%;">
+            <option value=""selected disabled>Select District</option>
+        </select>
+        <label for="" >Feeder Name:</label>
+        <select name="feed_name_stand" id="feed_name_stand" >
+            <option value=""selected disabled>Select feeder</option>
+        </select>
+        <br>
+        <br>
+         <label for="">Main Meter Config File</label>
+        <input type="file" id="main_config_st" name="main_config_st" >
+        <br>
+        <br>
+        <label for="">Check Meter Config File</label>
+        <input type="file" id="check_config_st" name="check_config_st" >
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+        <br>
+        <br>
+    </form>
+</div>
+
+<!--VARIOUS FORM PARTS FOR SUBSTATION METER-->
+<br>
+<br>
+<div id="allupdate_forms">
+<!--    UPDATE FORM 1-->
+    <form action="{% url 'update_form_I' %}" method="POST" name="update_form1" id="update_form1" >
+         {% csrf_token %}
+    <table>
+            <thead>
+            <tr>
+                <th colspan="4"><h2>UETCL SUBSTATION METER DETAILS</h2></th>
+            </tr>
+            <tr>
+                <th colspan="4" style="font-size:1.5em;">LOCATION:</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>Substation:</td>
+                <td><input type="text" name="sub" id="sub" placeholder="Eg Lugogo " maxlength="15" readonly></td>
+                <td>Component Name</td>
+                <td><input type="text" name="comp_n" id="comp_n"  maxlength="15" readonly ></td>
+
+            </tr>
+            <tr>
+                 <td>Voltage (kV) :</td>
+                <td><input type="text" name="voltage" id="voltage" PLACEHOLDER="Eg 132/33/11 kV" maxlength="15"></td>
+              <td>District:</td>
+                <td><input type="text" name="sub_dist" id="sub_dist" maxlength="15"></td>
+
+            </tr>
+               <td>Region:</td>
+                <td><input type="text" name="sub_region" id="sub_region" maxlength="15"></td>
+            <td>Coordinates (X)</td>
+                <td><input type="text" name="sub_cord_x" id="sub_cord_x" maxlength="10"></td>
+
+            </tr>
+               <td>Coordinates (Y)</td>
+                <td><input type="text" name="sub_cord_y" id="sub_cord_y" maxlength="10"></td>
+            </tbody>
+    </table>
+        <br>
+    <br>
+                <button type="submit">Update</button>
+</form>
+
+<!--    UPDATE FORM II-->
+    <form action="{% url 'update_form_II' %}" method="POST" name="update_form2" id="update_form2">
+         {% csrf_token %}
+        <table>
+         <thead>
+            <tr>
+                <th colspan="4"><h2>UETCL SUBSTATION METER DETAILS</h2></th>
+            </tr>
+            </thead>
+        <tbody>
+              <tr>
+               <th colspan="4" style="font-size:1.2em;">FEEDER DETAILS,OWNER AND DISTRIBUTORS:</th>
+        <tr>
+                  <tr>
+                       <td>Substation:</td>
+                <td><input type="text" name="sub_II" id="sub_II" placeholder="Eg Lugogo " maxlength="15" readonly></td>
+                <td>Component Name</td>
+                <td><input type="text" name="comp_II" id="comp_II"  maxlength="15" readonly ></td>
+              </tr>
+            </tr>
+      <td>Capacity (MVA):</td>
+     <td><input type="text" name="capacity" id="capacity" maxlength="7"></td>
+                 <td>Network Type:</td>
+               <td colspan="1">
+          <select name="net_type" id="net_type" >
+            <option value="N/A" selected>N/A</option>
+                    <option value="ring">Ring</option>
+          <option value="radial">Radial</option>
+        </select>
+        </td>
+
+            </tr>
+            <tr>
+                 <td>Component Voltage (kV):</td>
+                <td><input type="number" name="sub_feeder_voltage" id="sub_feeder_voltage" maxlength="5"></td>
+
+                <td>Meter Owner:</td>
+                <td><input type="text" name="sub_meter_owner" id="sub_meter_owner" maxlength="15"></td>
+
+            </tr>
+            <tr>
+                 <td>Distributor:</td>
+                <td><input type="text" name="distributor" id="distributor" maxlength="15"></td>
+                <td>Comments:</td>
+                <td colspan="3"><input type="text"  name="subs_contractor" id="subs_contractor" maxlength="30"></td>
+
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+          <button type="submit" >Update</button>
+    </form>
+
+<!--    UPDATE FORM III-->
+    <form action="{% url 'update_form_III' %}" name="update_form3" id="update_form3" method="POST">
+         {% csrf_token %}
+     <table>
+            <thead>
+            <tr>
+                <th colspan="4"><h2>UETCL SUBSTATION METER DETAILS</h2></th>
+            </tr>
+            </thead>
+
+            <tbody>
+     <tr>
+               <th colspan="4" style="font-size:1.3em;">CT AND VT DETAILS:</th>
+            </tr>
+     <tr>
+          <td>Substation:</td>
+                <td><input type="text" name="sub_III" id="sub_III"  maxlength="15" readonly></td>
+                <td>Component Name</td>
+                <td><input type="text" name="comp_III" id="comp_III"  maxlength="15" readonly ></td>
+     </tr>
+            <tr>
+                <td>CT Manufacturer</td>
+                <td><input type="text" name="sub_ct_manu" id="sub_ct_manu" maxlength="25"></td>
+                <td>Type:</td>
+                <td><input type="text" name="sub_ct_type" id="sub_ct_type" maxlength="15"></td>
+            </tr>
+
+            <tr>
+                <td>No. of Metering CT cores</td>
+                <td><input type="number" name="sub_ct_cores" id="sub_ct_cores" maxlength="3"></td>
+                <td>CT Core ratios</td>
+                <td><input type="text" name="sub_ct_core_ratios" maxlength="20"></td>
+            </tr>
+            <tr>
+                <td>CT core Used</td>
+                <td><input type="text" name="sub_core_used" id="sub_core_used" maxlength="10"></td>
+                <td>Accuracy class</td>
+                <td><input type="text" placeholder="Class of wired CT core" name="sub_accuracy_class" id="sub_accuracy_class" maxlength="5"></td>
+            </tr>
+            <tr>
+                <td>No. of Available spares</td>
+                <td><input type="text" name="sub_avail_spares" id="sub_avail_spares" maxlength="3"></td>
+                <td>Spares Class</td>
+                <td><input type="text" placeholder="avail spare CT cores" name="sub_spares_class" id="sub_spares_class" maxlength="10"></td>
+            </tr>
+             <tr>
+                <td>VT Manufacturer</td>
+                <td><input type="text" name="sub_vt_manu" id="sub_vt_manu" maxlength="15"></td>
+                <td>Type:</td>
+                <td><input type="text" name="sub_VT_type" id="sub_VT_type" maxlength="15"></td>
+            </tr>
+                   <tr>
+                        <td>VT Ratio</td>
+                <td><input type="text" name="sub_vt_ratio" id="sub_vt_ratio" maxlength="10"></td>
+                       <td>VT Accuracy</td>
+                <td><input type="text" name="sub_vt_accuracy" id="sub_vt_accuracy" maxlength="5"></td>
+                   </tr>
+            </tbody>
+     </table>
+        <br>
+        <br>
+             <button type="submit" >Update</button>
+</form>
+
+<!--    UPDATE FORM IV ENERGY METERS-->
+    <form action="{% url 'update_form_IV' %}" id="update_form4" name="update_form4" method="POST">
+         {% csrf_token %}
+        <table>
+             <thead>
+            <tr>
+                <th colspan="4"><h2>UETCL MAIN ENERGY METER DETAILS UPDATE</h2></th>
+            </tr>
+            </thead>
+            <tbody>
+             <th colspan="4" style="font-size:1.3em;">MAIN ENERGY METER DETAILS:</th>
+            </tr>
+              <tr>
+          <td>Substation:</td>
+                <td><input type="text" name="sub_IV" id="sub_IV"  maxlength="15" readonly></td>
+                <td>Component Name</td>
+                <td><input type="text" name="comp_IV" id="comp_IV"  maxlength="15" readonly ></td>
+     </tr>
+            <tr>
+                <td>Manufacturer</td>
+                <td><input type="text" name="sub_meter_manu" id="sub_meter_manu" maxlength="15"></td>
+                <td>Type:</td>
+                <td><input type="text" name="sub_meter_type" id="sub_meter_type" maxlength="15"></td>
+            </tr>
+             <tr>
+                <td>Meter No</td>
+                <td><input type="text" name="sub_meter_no" id="sub_meter_no" maxlength="15"></td>
+                <td>Y.O.M</td>
+                <td><input type="text" placeholder="Year of Manufacture" name="sub_YOM" id="sub_YOM" maxlength="15"></td>
+            </tr>
+             <tr>
+                <td>Accuracy Class</td>
+                <td><input type="text" name="sub_meter_acc_class" id="sub_meter_acc_class" maxlength="5"></td>
+                  <td>No. Of Elements:</td>
+               <td colspan="1">
+          <select name="sub_meter_elements" id="sub_meter_elements" >
+<!--            <option value="none" selected disabled hidden>No. Of Elements</option>-->
+              <option value="N/A" selected>N/A</option>
+          <option value="3-Element">3-Element</option>
+          <option value="2-Element">2-Element</option>
+        </select>
+        </td>
+
+            </tr>
+            <tr>
+                  <td>Wired as:</td>
+               <td colspan="1">
+          <select name="sub_meter_wire" id="sub_meter_wire" >
+<!--            <option value="none" selected disabled hidden>Type of wiring</option>-->
+              <option value="N/A" selected>N/A</option>
+          <option value="3-Element">3-Element</option>
+          <option value="2-Element">2-Element</option>
+        </select>
+        </td>
+                <td>Installation date</td>
+                <td><input type="date" name="sub_meter_install_date" id="sub_meter_install_date" maxlength="12"></td>
+
+            </tr>
+             <tr>
+                  <td>Decommissioning date</td>
+                <td><input type="date" placeholder="Proposed Decomissioning date" name="sub_meter_decom_date" id="sub_meter_decom_date" maxlength="12"></td>
+                <td>Access</td>
+                   <td colspan="1">
+          <select name="sub_meter_access" id="sub_meter_access" >
+<!--            <option value="none" selected disabled hidden>Meter Access</option>-->
+              <option value="N/A" selected>N/A</option>
+          <option value="remote">Remote</option>
+          <option value="local">Local</option>
+        </select>
+                   </td>
+            <tr>
+                <td>IP Address</td>
+                <td><input type="text" name="sub_ip_address" id="sub_ip_address" maxlength="20"></td>
+             <td>Avail Interfaces</td>
+                <td><input type="text" placeholder="Ethernet,optical eye,VGA" name="sub_meter_interfaces" id="sub_meter_interfaces" maxlength="40"></td>
+            </tr>
+            <tr>
+                <td>Communication Protocols</td>
+                <td><input type="text" placeholder="Protocols eg GSM, TCP/IP" name="sub_meter_comm_protocols" id="sub_meter_comm_protocols" maxlength="20"></td>
+                <td>Protocol Used</td>
+                <td><input type="text" placeholder="Protocols eg GSM, TCP/IP" name="sub_meter_protocol_used" id="sub_meter_protocol_used" maxlength="10"></td>
+            </tr>
+
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <button type="submit">Update</button>
+    </form>
+
+    <!--    UPDATE FORM V CHECK ENERGY METERS-->
+    <form action="{% url 'update_form_V' %}" id="update_form5" name="update_form5" method="POST">
+            {% csrf_token %}
+        <table>
+             <thead>
+            <tr>
+                <th colspan="4"><h2>UETCL CHECK ENERGY METER DETAILS UPDATE</h2></th>
+            </tr>
+            </thead>
+            <tr>
+               <th colspan="4" style="font-size:1.3em;">CHECK METER DETAILS:</th>
+            </tr>
+                    <tr>
+          <td>Substation:</td>
+                <td><input type="text" name="sub_V" id="sub_V"  maxlength="15" readonly></td>
+                <td>Component Name</td>
+                <td><input type="text" name="comp_V" id="comp_V"  maxlength="15" readonly ></td>
+     </tr>
+            <tr>
+                <td>Manufacturer</td>
+                <td><input type="text" name="sub_meter_manu_ch" id="sub_meter_manu_ch" maxlength="15"></td>
+                <td>Type:</td>
+                <td><input type="text" name="sub_meter_type_ch" id="sub_meter_type_ch" maxlength="15"></td>
+            </tr>
+             <tr>
+                <td>Meter No</td>
+                <td><input type="text" name="sub_meter_no_ch" id="sub_meter_no_ch" maxlength="15"></td>
+                <td>Y.O.M</td>
+                <td><input type="text" placeholder="Year of Manufacture" name="sub_YOM_ch" id="sub_YOM_ch" maxlength="15"></td>
+            </tr>
+             <tr>
+                <td>Accuracy Class</td>
+                <td><input type="text" name="sub_meter_acc_class_ch" id="sub_meter_acc_class_ch" maxlength="5"></td>
+                  <td>No. Of Elements:</td>
+               <td colspan="1">
+          <select name="sub_meter_elements_ch" id="sub_meter_elements_ch" >
+<!--            <option value="none" selected disabled hidden>No. Of Elements</option>-->
+              <option value="N/A" selected>N/A</option>
+          <option value="3-Element">3-Element</option>
+          <option value="2-Element">2-Element</option>
+        </select>
+        </td>
+
+            </tr>
+            <tr>
+                      <td>Wired as:</td>
+               <td colspan="1">
+          <select name="sub_meter_wire_ch" id="sub_meter_wire_ch" >
+<!--            <option value="none" selected disabled hidden>Type of wiring</option>-->
+              <option value="N/A" selected>N/A</option>
+          <option value="3-Element">3-Element</option>
+          <option value="2-Element">2-Element</option>
+        </select>
+        </td>
+                <td>Installation date</td>
+                <td><input type="date" name="sub_meter_install_date_ch" id="sub_meter_install_date_ch" maxlength="12"></td>
+
+            </tr>
+             <tr>
+                  <td>Decommissioning date</td>
+                <td><input type="date" placeholder="Proposed Decomissioning date" name="sub_meter_decom_date_ch" id="sub_meter_decom_date_ch" maxlength="12"></td>
+                <td>Access</td>
+
+                   <td colspan="1">
+          <select name="sub_meter_access_ch" id="sub_meter_access_ch" >
+<!--            <option value="none" selected disabled hidden>Meter Access</option>-->
+              <option value="N/A" selected >N/A</option>
+          <option value="remote">Remote</option>
+          <option value="local">Local</option>
+        </select>
+                   </td>
+            </tr>
+            <tr>
+                <td>IP Address</td>
+                <td><input type="text" name="sub_ip_address_ch" id="sub_ip_address_ch" maxlength="20"></td>
+                 <td>Avail Interfaces</td>
+                <td><input type="text" placeholder="Ethernet,optical eye,VGA" name="sub_meter_interfaces_ch" id="sub_meter_interfaces_ch" maxlength="40"></td>
+            </tr>
+            <tr>
+                <td>Communication Protocols</td>
+                <td><input type="text" placeholder="Protocols eg GSM, TCP/IP" name="sub_meter_comm_protocols_ch" id="sub_meter_comm_protocols_ch" maxlength="15"></td>
+                <td>Protocol Used</td>
+                <td><input type="text" placeholder="Protocols eg GSM, TCP/IP" name="sub_meter_protocol_used_ch" id="sub_meter_protocol_used_ch" maxlength="10"></td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <button type="submit">Update</button>
+    </form>
+</div>
+
+</body>
+</html>
+<style>
+body{background-color: #F4F6F6;}
+#sub_det, #ipp_det,#stand_det{display:none}
+  select{width:30%;font-size:1.5em;}
+    label{font-size:1.5em;}
+    button {width:20%; margin-left:10%;font-size:1.5em; padding:5px;border:2px solid crimson;}
+     button:hover{color:white; background:crimson; border:crimson;}
+     .meter_cat select{width:15%;}
+     .all_forms{text-align:center;padding-top:50px;}
+#check_config_st,#main_config_st,#check_config_ipp,#main_config_ipp,
+#main_config,#check_config{padding:5px;width:40%;font-size:1.2em;}
+#sub_det, #ipp_det,#stand_det{width:70%;background-color:#CCD1D1;margin:auto;border-radius:20px;padding:10px;}
+
+/*HIDING FORMS */
+#update_form1,#update_form3, #update_form2, #update_form4, #update_form5{display:none;}
+#update_form1 button,#update_form3 button, #update_form2 button, #update_form4 button, #update_form5 button {margin-left:40%;}
+
+/*TABLE CSS*/
+    body{background-color: #F2F7F9;}
+    table, th, td {
+  border: 1px solid black;
+}
+tr{height:20px;font-size:1.2em;}
+table{width:80%; margin:auto;}
+input {font-size:1.3em;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center; background-color: #F2F7F9;
+}
+table select {width:100%; border:0; background-color: #F2F7F9;font-size:1.3em;}
+
+
+</style>
+<script>
+
+
+   //LIST OF IPPs, SUBSTATIONS AND STANDALONE METERS
+var ipps = {{ final_ipp_listall|safe }};
+var subs = {{ final_sub_listall|safe }};
+var stand_list = {{ final_stand_listall|safe }};
+
+document.getElementById('meter_cat').addEventListener("change", function() {
+var x = this.value;
+if (x == 'sub'){
+document.getElementById('sub_det').style.display = "block";
+document.getElementById('ipp_det').style.display = "none";
+document.getElementById('stand_det').style.display = "none";
+var select = document.getElementById("sub_list");
+for (var i = 0; i<subs.length; i++){
+var option = document.createElement("OPTION"),
+txt = document.createTextNode(subs[i]);
+option.appendChild(txt);
+select.insertBefore(option,select.lastChild);
+}
+}
+if (x == 'ipp'){
+document.getElementById('ipp_det').style.display = "block";
+document.getElementById('sub_det').style.display = "none";
+document.getElementById('stand_det').style.display = "none";
+var select = document.getElementById("ipp_list");
+for (var i = 0; i<ipps.length; i++){
+var option = document.createElement("OPTION"),
+txt = document.createTextNode(ipps[i]);
+option.appendChild(txt);
+select.insertBefore(option,select.lastChild);
+}
+}
+if (x == 'stand'){
+
+document.getElementById('stand_det').style.display = "block";
+document.getElementById('ipp_det').style.display = "none";
+document.getElementById('sub_det').style.display = "none";
+var select = document.getElementById("dist_list");
+for (var i = 0; i<stand_list.length; i++){
+var option = document.createElement("OPTION"),
+txt = document.createTextNode(stand_list[i]);
+option.appendChild(txt);
+select.insertBefore(option,select.lastChild);
+}
+}
+});
+
+
+//AJAX CALL
+
+<!--CRSF TOKEN-->
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
+
+const request = new Request(
+<!--    /* URL */,-->
+    {headers: {'X-CSRFToken': csrftoken}}
+);
+
+<!--SUBSTATION FUNCTIONS SINGLE DAY-->
+
+document.getElementById('sub_list').addEventListener("change", function() {
+var selected_sub = this.value;
+console.log(selected_sub);
+$.ajax({
+"type":"POST",
+"url":'feeder_list',
+"dataType":"json",
+data:{'selected_sub':selected_sub,},
+"headers": { "X-CSRFToken": getCookie("csrftoken") },
+success:function(data) {
+          //your returned python list
+          new_list = data['finals']
+          <!--//Now, loop through the new_list and append these items wrapped in <li> tags to your ul. -->
+          console.log(new_list);
+          var select = document.getElementById("feed_name");
+          var i, L = select.options.length - 1;
+   for(i = L; i >= 1; i--) {
+      select.remove(i);}
+for (var i = 0; i<new_list.length; i++){
+var option = document.createElement("OPTION"),
+txt = document.createTextNode(new_list[i]);
+option.appendChild(txt);
+select.insertBefore(option,select.lastChild);}
+          }
+});
+});
+
+<!--IPP FUNCTIONS SINGLE DAY-->
+document.getElementById('ipp_list').addEventListener("change", function() {
+var selected_ipp = this.value;
+console.log(selected_ipp);
+$.ajax({
+"type":"POST",
+"url":'ipp_feeder_list',
+"dataType":"json",
+data:{'selected_ipp':selected_ipp,},
+"headers": { "X-CSRFToken": getCookie("csrftoken") },
+success:function(data) {
+          //your returned python list
+          new_list = data['finals_ipp']
+          <!--//Now, loop through the new_list and append these items wrapped in <li> tags to your ul. -->
+          console.log(new_list);
+          var select = document.getElementById("feed_name_ipp");
+          var i, L = select.options.length - 1;
+   for(i = L; i >= 1; i--) {
+      select.remove(i);}
+for (var i = 0; i<new_list.length; i++){
+var option = document.createElement("OPTION"),
+txt = document.createTextNode(new_list[i]);
+option.appendChild(txt);
+select.insertBefore(option,select.lastChild);}
+          }
+});
+});
+
+
+<!--STANDALONE FUNCTIONS SINGLE DAY-->
+document.getElementById('dist_list').addEventListener("change", function() {
+var selected_dist = this.value;
+console.log(selected_dist);
+$.ajax({
+"type":"POST",
+"url":'stand_feeder_list',
+"dataType":"json",
+data:{'selected_dist':selected_dist,},
+"headers": { "X-CSRFToken": getCookie("csrftoken") },
+success:function(data) {
+          //your returned python list
+          new_list = data['finals_stand']
+          <!--//Now, loop through the new_list and append these items wrapped in <li> tags to your ul. -->
+          console.log(new_list);
+          var select = document.getElementById("feed_name_stand");
+          var i, L = select.options.length - 1;
+   for(i = L; i >= 1; i--) {
+      select.remove(i);}
+for (var i = 0; i<new_list.length; i++){
+var option = document.createElement("OPTION"),
+txt = document.createTextNode(new_list[i]);
+option.appendChild(txt);
+select.insertBefore(option,select.lastChild);}
+          }
+});
+});
+
+//DISPLAYING AND HIDING UPDATE PART DIV
+var upp = document.getElementById('div_update_part');
+upp.style.display = 'none';
+
+//EVENT LISTENERS GETTING USER SELECTIONS FOR ALL FORMS
+document.getElementById('feed_name').addEventListener("change", function() {         //LISTENING TO COMPONENT USER SELECTION
+upp.style.display = 'block';
+var subss = document.getElementById('sub_list').value;
+document.getElementById('sub').value = subss;
+document.getElementById('sub_II').value = subss;
+document.getElementById('sub_III').value = subss;
+document.getElementById('sub_IV').value = subss;
+document.getElementById('sub_V').value = subss;
+var compss = document.getElementById('feed_name').value;
+document.getElementById('comp_n').value = compss;
+document.getElementById('comp_II').value = compss;
+document.getElementById('comp_III').value = compss;
+document.getElementById('comp_IV').value = compss;
+document.getElementById('comp_V').value = compss;
+});
+
+document.getElementById('sub_list').addEventListener("change", function() {               //LISTENING TO SUBSTATION USER SELECTION
+var subss = this.value;
+document.getElementById('sub').value = subss;
+document.getElementById('sub_II').value = subss;
+document.getElementById('sub_III').value = subss;
+document.getElementById('sub_IV').value = subss;
+document.getElementById('sub_V').value = subss;
+
+setTimeout(function() {             //TIME DELAY FOR UPDATING COMPONENT NAME
+var compss = document.getElementById('feed_name').value;
+document.getElementById('comp_n').value = compss;
+document.getElementById('comp_II').value = compss;
+document.getElementById('comp_III').value = compss;
+document.getElementById('comp_IV').value = compss;
+document.getElementById('comp_V').value = compss;
+    }, 2000)
+});
+
+//DISPLAYING PARTS OF NODE FORMS DEPENDING ON USER SELECTION
+var f1 = document.getElementById('update_form1');
+var f2 = document.getElementById('update_form2');
+var f3 = document.getElementById('update_form3');
+var f4 = document.getElementById('update_form4');
+var f5 = document.getElementById('update_form5');
+
+document.getElementById('update_part').addEventListener("change", function() {
+var up_part = document.getElementById('update_part').value;
+if (up_part == 'part_1'){
+f1.style.display = 'block';
+f2.style.display = 'none';
+f3.style.display = 'none';
+f4.style.display = 'none';
+f5.style.display = 'none';
+}
+if (up_part == 'part_2'){
+    f2.style.display = 'block';
+    f1.style.display = 'none';
+    f3.style.display = 'none';
+    f4.style.display = 'none';
+    f5.style.display = 'none';
+    }
+
+if (up_part == 'part_3'){
+f3.style.display = 'block';
+f1.style.display = 'none';
+f2.style.display = 'none';
+f4.style.display = 'none';
+f5.style.display = 'none';
+}
+if (up_part == 'part_4'){
+f4.style.display = 'block';
+f1.style.display = 'none';
+f2.style.display = 'none';
+f3.style.display = 'none';
+f5.style.display = 'none';
+}
+if (up_part == 'part_5'){
+f5.style.display = 'block';
+f1.style.display = 'none';
+f2.style.display = 'none';
+f3.style.display = 'none';
+f4.style.display = 'none';
+}
+});
+
+
+
+
+</script>

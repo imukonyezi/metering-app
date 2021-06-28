@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Welcome Page</title>
+    <div style="margin-top:0em;margin-right:2em;" class="login">
+    <a href="homepage" style="float:right;"><h1>Log Out</h1></a>
+    <a href="#" style="float:right;margin-right:4%;"><h1>Change Password</h1></a>
+    <h1 style="float:left;">Welcome to UETCL Metering Portal: <span style="color:crimson;width:10%;">{{user}}</span></h1>
+</div>
+</head>
+<body>
+<div class="overall">
+    <div class="csv_sub">
+        <h1 style="text-align:center;font-size:2em;text-decoration:underline;">UPLOAD MONTHLY RECORDS</h1>
+ <form action="{% url 'fillform' %}" method="POST" name="form" id="form" class="form" enctype="multipart/form-data">
+  {% csrf_token %}
+  <h2 id="hl1">Submit Elster Monthly files here</h2>
+  <input type="file" id="myFile_m" name="filename_m" accept=".csv" multiple>
+     <br>
+  <button type="submit" onclick="submitfunction()">Submit CSV files</button>
+ </form>
+        <br>
+        <br>
+        <h2 id="hl2">Submit CEWE Prometer Monthly PDF Files Here</h2>
+       <form action="{% url 'prometer' %}" method="POST" name="form_pro" id="form_pro" class="form" enctype="multipart/form-data">
+  {% csrf_token %}
+           <input type="file" id="prometer" name="prometer" accept=".pdf" multiple>
+           <button type="submit" onclick="submitfunction1()">Submit PDF files</button>
+       </form>
+              <br>
+        <br>
+        <h2 id="hl3">Submit CEWE Prometer 100 Monthly CSV Files Here</h2>
+       <form action="{% url 'prometer_100' %}" method="POST" name="form_pro100" id="form_pro100" class="form" enctype="multipart/form-data">
+  {% csrf_token %}
+           <input type="file" id="prometer_100" name="prometer_100" accept=".csv" multiple>
+           <button type="submit" onclick="submitfunction1()">Submit CSV files</button>
+       </form>
+        <br>
+        <br>
+          <h2 id="hl4">Submit Landis & Gyr Monthly Excel Files Here</h2>
+       <form action="{% url 'landis' %}" method="POST" name="landis_form" id="landis_form" class="form" enctype="multipart/form-data">
+  {% csrf_token %}
+           <input type="file" id="landis" name="landis" accept=".xlsx" multiple>
+           <button type="submit" onclick="submitfunction1()">Submit Excel files</button>
+       </form>
+    </div>
+    <div class="other_rec">
+ <a href="success"><button type="submit" value="success">Insert Monthly Record Manually</button></a>
+    <br>
+    <a href="newmeter"><button type="submit" value="newmeter">Add New Metering Point</button></a>
+      <br>
+      <a href="new_LP"><button type="submit" value="new_LP">Insert Load Profile</button></a>
+      <a href="new_job"><button type="submit" value="new_job">Add New Job Summary</button></a>
+    <a href="config_file_page"><button type="submit" value="user_page">Add Meter Config File</button></a>
+    <a href="update_node_details"><button type="submit" value="update_node_details">Update Node Details</button></a>
+    <a href="querries"><button type="submit" value="querries">Run Queries</button></a>
+
+    </div>
+</div>
+
+<div class="second-div">
+     <div class="revenue">
+   <!-- <form action="{% url 'umeme' %}" name="revenue" id="revenue">-->
+       <!--  {% csrf_token %}-->
+    <h1>Generate Monthly Bills</h1>
+        <a href="umeme"><button type="submit" value="umeme">Umeme</button></a>
+   <!-- <select name="um1" id="um1" style="display:none">
+        <option value="umeme" selected></option>
+    </select>-->
+    <button>UEDCL</button>
+    <button>IPPs</button>
+    <button>PACMECS</button>
+    <button>KRECS</button>
+    <button>BEL</button>
+       <!-- </form>-->
+</div>
+</div>
+<div id="history">
+<div class="hist_records" id="hist_records">
+<h1>Upload Historical Records Here</h1>
+    <br>
+        <form action="{% url 'hist_records' %}" method="POST" name="form_1" id="form_1" class="form_p" enctype="multipart/form-data">
+  {% csrf_token %}
+            <h2>Upload Elster Historical Records Here</h2>
+            <br>
+        <input type="file" accept=".csv" id="hist" name="hist" multiple>
+<!--        <small>Upload file here</small>-->
+            <br>
+            <br>
+        <button type="submit" id="hist_records_button" onclick="submitfunction()">Submit Historical Record</button>
+            <br>
+            <br>
+            <br>
+        </form>
+</div>
+    </div>
+<div class="new_ipp_overall">
+<div class="new_ipp" id="new_ipp">
+    <br>
+    <br>
+    <button onclick="new_ippfxn()" id="first_btn">Add New IPP</button>
+    <br>
+    <br>
+    <form action="{% url 'new_ipp' %}" name="add_newipp" id="add_newipp" method="post">
+        {% csrf_token %}
+        <table>
+            <thead>
+            <tr>
+                <th colspan="4" style="text-align:center;"><h2>UETCL POWER PRODUCER DETAILS</h2></th>
+            </tr>
+            </thead>
+
+            <tr>
+            <tr>
+                <td>Name of IPP:</td>
+                <td><input type="text" name="ipp_name" id="ipp_name" maxlength="20"></td>
+                <td>Installed Capacity (MW) :</td>
+                <td><input type="text" name="install_cap" id="install_cap" maxlength="15"></td>
+            </tr>
+              <tr>
+                <td>Generation Type:</td>
+                <td><input type="text" name="gen_type" id="gen_type" PLACEHOLDER="Eg solar,hydro" maxlength="15"></td>
+                <td>District:</td>
+                <td><input type="text" name="ipp_dist" id="ipp_dist" maxlength="15"></td>
+            </tr>
+            <tr>
+                <td>Region:</td>
+                <td><input type="text" name="ipp_region" id="ipp_region" maxlength="15"></td>
+                 <td>Connecting Substation:</td>
+                <td><input type="text" name="ipp_sub" id="ipp_sub" maxlength="20"></td>
+
+            </tr>
+            <tr>
+                <td>Voltage</td>
+                <td><input type="text" name="ipp_vol" id="ipp_vol" maxlength="10"></td>
+                <td>Distributor</td>
+                <td><input type="text" name="ipp_dis" id="ipp_dis" maxlength="10"></td>
+            </tr>
+            </tr>
+             <td>Coordinates (X)</td>
+                <td><input type="text" name="ipp_cord_x" id="ipp_cord_x" maxlength="10"></td>
+                 <td>Coordinates (Y)</td>
+                <td><input type="text" name="ipp_cord_y" id="ipp_cord_y" maxlength="10"></td>
+
+            </tr>
+            <tr>
+
+               <td >Comments:</td>
+                <td><input type="text" name="comment" id="comment"  maxlength="35"></td>
+            </tr>
+
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <button type="submit" onclick="subDispatch()">Submit</button>
+        <br>
+        <br>
+    </form>
+</div>
+    </div>
+</body>
+<style>
+body{background-color: #cccccc;}
+button:hover{color:white; background:crimson; border:crimson;}
+
+/*STYLING FOR LOGIN HEADER*/
+.login{width:100%;height:50px;background:#09ADE4;padding:10px;}
+.login h1{font-size:1.5em;text-align: left; color: black; margin-top:auto; }
+
+/*STYLING FOR FIRST DIV*/
+.overall{padding:30px;}
+.csv_sub{background:#F4F6F7;width: 47%; float: left; height:500px;;border-radius:20px; border:2px solid black;
+    margin-left:2%;padding:5px 0px 10px 50px;}
+    .other_rec{background:#09ADE4;width: 47%;float: left;height:500px;align:center;border-radius:20px; border:2px solid black;
+    margin-left:3%;}
+    .other_rec button{width:80%; font-size:1.5em;margin-left:10%;margin-top:1%;padding:10px;}
+     form small{margin-left:10%;color:black;font-size:1.2em;}
+    .csv_sub form input{padding:5px;float:left;width:40%;font-size:1.2em;}
+    .csv_sub form button {width:30%; float:right;border:2px solid crimson;font-size:1.2em;padding:5px;margin-right:20%;}
+    .csv_sub h2{padding:10px 0px 10px 0px;}
+    .csv_sub #hl3, #hl2, #hl1,#hl4{text-decoration:underline;font-size:1.5em;}
+    /*form button {width:20%; margin-left:20%;font-size:1.5em; padding:5px;border:2px solid crimson;}*/
+/* Clear floats after the columns */
+.overall:after { content: ""; display: table; clear: both;}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .csv_sub , .other_rec {
+    width: 100%;}}
+
+/*STYLING FOR SECOND DIV*/
+.second-div{width:100%;background:#F5EEF8;padding:50px 0px 50px 10px;}
+.revenue{width: 95%;border:2px solid black;margin:auto; }
+.revenue button{width:25%;display:inline-block;margin:2%;font-size:1.5em;padding:5px;border:2px solid crimson;}
+.revenue h1{text-align:center;text-decoration:underline;font-size:2em;}
+
+/*STYLING FOR THIRD DIV*/
+#history{width:100%;background:#8FD2E5 ;padding:20px 0px 20px 0px;}
+.hist_records{padding:5px 0px 30px 10px;text-align:center;}
+#hist_records form{border:2px solid crimson;border-radius:20px;width:50%;margin:auto;padding:10px 0px 10px 10px;}
+#hist_records button {width:50%; border:2px solid crimson;font-size:1.8em;}
+#hist_records h1 {font-size:2em;text-decoration:underline;text-align:center;text-transform:uppercase;}
+#hist_records h2 {font-size:1.5em;text-decoration:underline;text-align:left;}
+#hist_records form input{padding:5px;width:80%;font-size:1.2em;margin:auto;}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other
+@media screen and (max-width: 600px) {
+  .revenue, .hist_records {
+    width: 100%;} */
+
+
+/*STYLING FOR THE NEW IPP TABLE ON WELCOME PAGE*/
+.new_ipp_overall{width:100%;}
+#new_ipp{width:100%;padding:20px 0px 20px 20px;border:2px solid black;}
+#new_ipp button{width:30%; border:2px solid crimson;font-size:2em;margin-left:35%;}
+#add_newipp{width:90%;border:1px solid black;margin:auto;display:none;}
+    table, th, td {
+  border: 1px solid black;
+}
+table{width:100%;margin:auto;}
+table input {font-size:1.2em;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center; background-color: #F2F7F9;
+}
+table td{font-size:1.5em;text-align:center;}
+/*<div class="new_ipp_overall">
+<div class="new_ipp" id="new_ipp">
+    <button>Add New Ipp</button>
+    <form action="" name="add_newipp" id="add_newipp"> */
+</style>
+
+<script language="javascript">
+function submitfunction(){
+  const main = document.getElementById("myFile_m")
+  const hist = document.getElementById("form_1")
+  const form = document.getElementById("form")
+  const errorElement = document.getElementById("error")
+  const mainvalue = document.getElementById("myFile_m").value
+
+  form.addEventListener('submit',(e) =>{
+  let messages = []
+  if (main.value === '' )
+  {alert("Upload at least one csv file")
+  e.preventDefault()}
+
+  var fileInput = document.getElementById('myFile_m');
+    var filePath = fileInput.value;
+    var allowedExtensions = /(\.csv)$/i;
+    if(fileInput.value != '' && !allowedExtensions.exec(filePath)){
+      alert("Upload csv files only")
+      e.preventDefault()
+    }
+  })
+  }
+// Event Listener for Historical values
+  const new_form = document.getElementById("form_1")
+  const hist_file = document.getElementById("hist")
+  new_form.addEventListener('submit',(e) =>{
+  if (hist_file.value === '' )
+  {alert("Upload at least one csv file")
+  e.preventDefault()}
+
+    var filePath = hist_file.value;
+    var allowedExtensions = /(\.csv)$/i;
+    if(hist_file.value != '' && !allowedExtensions.exec(filePath)){
+      alert("Upload csv files only")
+      e.preventDefault()
+    }
+  })
+function submitfunction1(){
+const cewe_p = document.getElementById("prometer")
+  const cewe_p100 = document.getElementById("prometer_100")
+  const form_p = document.getElementById("form_pro")
+  const form_p100 = document.getElementById("form_pro100")
+  const errorElement = document.getElementById("error")
+  form_p.addEventListener('submit',(e) =>{
+  if (cewe_p.value === '' )
+  {alert("Upload at least one PDF file")
+  e.preventDefault()}
+    var filePath = cewe_p.value;
+    var allowedExtensions = /(\.pdf)$/i;
+    if(cewe_p.value != '' && !allowedExtensions.exec(filePath)){
+      alert("Upload PDF files only")
+      e.preventDefault()
+    }
+  })
+   form_p100.addEventListener('submit',(e) =>{
+  if (cewe_p100.value === '' )
+  {alert("Upload at least one CSV file")
+  e.preventDefault()}
+ var filePath1 = cewe_p100.value;
+    var allowedExtensions = /(\.csv)$/i;
+    if(cewe_p100.value != '' && !allowedExtensions.exec(filePath1)){
+      alert("Upload CSV files only")
+      e.preventDefault()
+    }
+    })
+
+    //LANDIS
+      landis_form.addEventListener('submit',(e) =>{
+  if (landis.value === '' )
+  {alert("Upload at least one excel file")
+  e.preventDefault()}
+ var filePath1 = landis.value;
+    var allowedExtensions = /(\.xlsx)$/i;
+    if(landis.value != '' && !allowedExtensions.exec(filePath1)){
+      alert("Upload excel files only")
+      e.preventDefault()
+    }
+    })
+}
+
+//NEW IPP FUNCTION
+function new_ippfxn(){
+console.log("kimera")
+var ippBtn = document.getElementById("first_btn");
+var newIppForm = document.getElementById("add_newipp");
+//newIppForm.style.display = 'block';
+//ippBtn.style.display = 'none;
+if(newIppForm.style.display == 'block')
+          newIppForm.style.display = 'none';
+           else
+          newIppForm.style.display = 'block';
+}
+
+function subDispatch(){
+    var form_p = document.getElementById("add_newipp");
+    var dispatch_ele = document.forms["add_newipp"].getElementsByTagName("input");
+    form_p.addEventListener('submit',(e) =>{
+        for (i=0; i<dispatch_ele.length; i++){
+            if (dispatch_ele[i].value === ''){alert("Some Input Fields are Empty. Please ensure all form Inputs are filled out")
+            e.preventDefault()
+            break;
+         }
+          }
+    })
+    }
+</script>

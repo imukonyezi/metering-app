@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="plotly">
+    {% load plotly_dash %}
+
+{% plotly_app name=app ratio=1.5 %}
+</div>
+
+</body>
+</html>
+
+<style>
+    .plotly{height:700px;}
+</style>

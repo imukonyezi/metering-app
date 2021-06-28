@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bill</title>
+</head>
+<body>
+<div>
+    <form id="meter_reading" action="{% url 'bill_sub' %}" method="POST">
+        {% csrf_token %}
+<table style="width:80%; margin: auto;" >
+<tr>
+    <th colspan="1" ><img src="media/logo.jpg" alt=""></th>
+    <th colspan="3">  <h2 style="width:100%; text-align: center;">UGANDA ELECTRICITY TRANSMISSION COMPANY LTD</h2></th>
+</tr>
+    <tr>
+        <th colspan="1"><h4>METER READING POINT:</h4></th>
+        <th colspan="1"><input type="text" ></th>
+        <th ><h3>Energy Sales For:</h3></th>
+
+        <th><input type="text" name="month_of_sale" id="month_of_sale" value="{{bill_list.2}}"></th>
+
+    </tr>
+
+<tr>
+    <th>Reading Datetime:</th>
+    <th><input type="text" name="reading_date" value="{{bill_list.0}}"></th>
+    <th><!--Reading Time:--></th>
+      <th><!--<input type="text" name="reading_time" value="{{read_time}}">--></th>
+</tr>
+    <tr>
+        <th></th>
+        <th></th>
+        <th><h4>MAIN METER</h4></th>
+        <th><h4>CHECK METER</h4></th>
+    </tr>
+<tr>
+    <th><h3>No.</h3></th>
+     <th><h3>ITEM</h3></th>
+     <th><h3>READING</h3></th>
+     <th><h3>READING</h3></th>
+</tr>
+    <tr>
+        <td>1</td>
+        <td>UETCL No.</td>
+        <td><input type="text" name="main_meter_no" id="main_meter_no" value="{{bill_list.1}}"></td>
+         <td><input type="text" name="check_meter_no" id="check_meter_no" value="{{meter_ch}}"></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>H1:Cum Import (MWh)</td>
+        <td><input type="text" name="cum_imp_m" id="cum_imp_m" value="{{bill_list.3}}"></td>
+         <td><input type="text" name="cum_imp_c" id="cum_imp_c" value="{{imp_wh_ch}}"></td>
+    </tr>
+     <tr>
+        <td>3</td>
+        <td>H1:Cum export (MWh)</td>
+        <td><input type="text" name="cum_exp_m" id="cum_exp_m" value="{{bill_list.4}}"></td>
+         <td><input type="text" name="cum_exp_c" id="cum_exp_c" value="{{exp_wh_ch}}"></td>
+    </tr>
+     <tr>
+        <td>4</td>
+        <td>Apparent Power</td>
+        <td><input type="text" name="app_pow_m" id="app_pow_m" value="{{bill_list.5}}"></td>
+         <td><input type="text" name="app_pow_c" id="app_pow_c" value="{{app_pow_ch}}"></td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>H1: Rate 1 (MWh)</td>
+        <td><input type="text" name="rate1_m" id="rate1_m" value="{{bill_list.6}}"></td>
+         <td><input type="text" name="rate1_c" id="rate1_c" value="{{rate1_ch}}"></td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>H1: Rate 2 (MWh)</td>
+        <td><input type="text" name="rate2_m" id="rate2_m" value="{{bill_list.7}}"></td>
+         <td><input type="text" name="rate2_c" id="rate2_c"></td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>H1: Rate 3 (MWh)</td>
+        <td><input type="text" name="rate3_m" id="rate3_m" value="{{bill_list.8}}"></td>
+         <td><input type="text" name="rate3_c" id="rate3_c"></td>
+    </tr>
+     <tr>
+        <td>8</td>
+        <td>H1: Rate 4 (MWh)</td>
+        <td><input type="text" name="rate4_m" id="rate4_m" value="{{bill_list.9}}"></td>
+         <td><input type="text" name="rate4_c" id="rate4_c"></td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>H1: Rate 5 (MWh)</td>
+        <td><input type="text" name="rate5_m" id="rate5_m" value="{{bill_list.10}}"></td>
+         <td><input type="text" name="rate5_c" id="rate5_c"></td>
+    </tr>
+     <tr>
+        <td>10</td>
+        <td>H1: Rate 6 (MWh)</td>
+        <td><input type="text" name="rate6_m" id="rate6_m" value="{{bill_list.11}}"></td>
+         <td><input type="text" name="rate6_c" id="rate6_c"></td>
+    </tr>
+<!--    <tr>-->
+<!--        <td>11</td>-->
+<!--        <td>H1: Total MVArh</td>-->
+<!--        <td><input type="text" name="total_mvarh_m" id="total_mvarh_m" value="{{final_diff.9}}"></td>-->
+<!--         <td><input type="text" name="total_mvarh_c" id="total_mvarh_c" value="{{total_MVArh_ch}}"></td>-->
+<!--    </tr>-->
+      <tr>
+        <td>12</td>
+        <td>Number of Resets</td>
+        <td><input type="text" name="exp_mvarh_m" id="exp_mvarh_m" value="{{bill_list.12}}"></td>
+         <td><input type="text" name="exp_mvarh_c" id="exp_mvarh_c" value="{{total_exp_MVArh_ch}}"></td>
+    </tr>
+</table>
+     <!-- <p>{{month_values}}</p>
+        <p>{{prev_month_values}}</p>-->
+      <div class="report">
+           <h1>SUMMARY REPORT</h1>
+            <br>
+            <label for="">Percentage Change (MoM)</label>
+            <input type="text" value="{{change_1_f}}">
+          <br>
+          <br>
+            <label for="">Percentage Change (YoY)</label>
+            <input type="text" value="{{change_2_f}}">
+          <br>
+          <br>
+            <label for="">New Resets:</label>
+            <input type="text" value="{{bill_list.12}}">
+          <br>
+          <br>
+            <label for="">No of Interruptions:</label>
+            <input type="text">
+          <br>
+          <br>
+            <label for="">Total Duration of Interruptions:</label>
+            <input type="text">
+          <br>
+          <br>
+              <label for="">Reliability(%):</label>
+            <input type="text">
+          <br>
+          <br>
+            <label for="">Maximum Loading (%):</label>
+            <input type="text">
+          <br>
+          <br>
+            <label for="">CT Max Loading (%):</label>
+            <input type="text">
+           <br>
+          <br>
+            <label for="">Number of Disturbances:</label>
+            <input type="text">
+           <br>
+          <br>
+            <label for="">Losses (%):</label>
+            <input type="text">
+           <br>
+          <br>
+            <label for="">System PF:</label>
+            <input type="text">
+        </div>
+    <button type="submit">Submit</button>
+    </form>
+
+    </div>
+<style>
+body{background-color: #F2F7F9;}
+    table, th, td {
+  border: 1px solid black;text-align:center;
+}
+tr{height:20px;}
+
+input {font-size:1.5em;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center; background-color: #F2F7F9;
+}
+img{width:200px; height:100px}
+select {width:100%; border:0; background-color: #F2F7F9;}
+/*table h2, h3{margin: auto;} */
+button{font-size: 2em; width: 45%; padding: 5px; border: 2px solid green;
+    margin-left: 30%; margin-top: 2em;margin-bottom: 1em;}
+    button:hover{color:white; background:crimson; border:crimson;}
+    .report{width:80%;margin-left:10%;text-align:left;border:1px solid black;margin-top:1em;}
+
+    .report input{width:25%;}
+    .report label{font-size:1.3em;}
+    /* #table1 {border:0px solid transparent;}*/
+
+</style>
+
+
+</body>
+</html>

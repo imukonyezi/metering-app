@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dispatch Page</title>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div style="margin-top:0em;margin-right:2em;" class="login">
+    <a href="homepage" style="float:right;"><h1>Log Out</h1></a>
+    <h1 style="float:left;">Welcome to UETCL Dispatch Portal: <span style="color:crimson;width:10%;">{{user}}</span></h1>
+            <input type="text" value="{{user}}" id="user" style="display:none">
+</div>
+</head>
+<body>
+<div class="middle_div" id="middle_div">
+    <ul>
+        <li><a href="javascript:benjamin()">Submit Sys. Demand</a></li>
+        <li><a href="javascript:benjamin1()">Generate Schedule</a></li>
+        <li><a href="javascript:kimera_benjamin()">Check Declared Gen</a></li>
+        <li><a href="javascript:brinon()">View Declaration Forms</a></li>
+    </ul>
+
+</div>
+<br>
+<br>
+<!--DISPATCH FORM-->
+<div id="dispatch_all">
+    <form action="{% url 'uetcl_dispatch_sub' %}" method="POST" name="dispatch_form" id="dispatch_form" >
+       {% csrf_token %}
+        <div id="uetcl_logo" style="text-align:center;">
+            <img src="media/logo.jpg" alt="" height="200" style="float:left;">
+            <h2 style="font-size:1.8em;">UGANDA ELECTRICITY TRANSMISSION COMPANY LTD</h2>
+            <h2>DISPATCH SCHEDULE</h2>
+        </div>
+        <div id="prod_details">
+  <label for="">Username:</label>
+<input type="text" id="pr_name" name="pr_name" value="{{user}}" readonly>
+<label for="" style="margin-left:20px;">Date:</label>
+<input type="text" id="disp_date" name="disp_date" value="{{date}}" readonly>
+    <br>
+    <br>
+</div>
+<table id="dispatch">
+    <thead>
+
+    <tr>
+        <th>Hour</th>
+        <th>Projected System Demand (MW)</th>
+    </tr>
+    </thead>
+    <tr>
+    <td>0 - 1</td>
+        <td><input type="number" step="any" name="t1" id="t1"></td>
+    </tr>
+<tr>
+     <td>1 - 2</td>
+       <td><input type="number" step="any" name="t2" id="t2"></td>
+    </tr>
+    <tr>
+     <td>2 - 3</td>
+       <td><input type="number" step="any" name="t3" id="t3"></td>
+    </tr>
+    <tr>
+     <td>3 - 4</td>
+      <td><input type="number" step="any" name="t4" id="t4"></td>
+    </tr>
+    <tr>
+     <td>4 - 5</td>
+      <td><input type="number" step="any" name="t5" id="t5"></td>
+    </tr>
+    <tr>
+     <td>5 - 6</td>
+       <td><input type="number" step="any" name="t6" id="t6"></td>
+    </tr>
+    <tr>
+     <td>6 - 7</td>
+       <td><input type="number" step="any" name="t7" id="t7"></td>
+    </tr>
+    <tr>
+     <td>7 - 8</td>
+       <td><input type="number" step="any" name="t8" id="t8"></td>
+    </tr>
+    <tr>
+     <td>8 - 9</td>
+      <td><input type="number" step="any" name="t9" id="t9"></td>
+    </tr>
+    <tr>
+     <td>9 - 10</td>
+       <td><input type="number" step="any" name="t10" id="t10"></td>
+    </tr>
+    <tr>
+     <td>10 - 11</td>
+      <td><input type="number" step="any" name="t11" id="t11"></td>
+    </tr>
+      <tr>
+     <td>11 - 12</td>
+      <td><input type="number" step="any" name="t12" id="t12"></td>
+    </tr>
+      <tr>
+     <td>12 - 13</td>
+      <td><input type="number" step="any" name="t13" id="t13"></td>
+    </tr>
+      <tr>
+     <td>13 - 14</td>
+       <td><input type="number" step="any" name="t14" id="t14"></td>
+    </tr>
+     <tr>
+     <td>14 - 15</td>
+      <td><input type="number" step="any" name="t15" id="t15"></td>
+    </tr>
+    <tr>
+     <td>15 - 16</td>
+       <td><input type="number" step="any" name="t16" id="t16"></td>
+    </tr>
+    <tr>
+     <td>16 - 17</td>
+      <td><input type="number" step="any" name="t17" id="t17"></td>
+    </tr>
+    <tr>
+     <td>17 - 18</td>
+       <td><input type="number" step="any" name="t18" id="t18"></td>
+    </tr>
+    <tr>
+     <td>18 - 19</td>
+       <td><input type="number" step="any" name="t19" id="t19"></td>
+    </tr>
+    <tr>
+     <td>19 - 20</td>
+      <td><input type="number" step="any" name="t20" id="t20"></td>
+    </tr>
+     <tr>
+     <td>20 - 21</td>
+       <td><input type="number" step="any" name="t21" id="t21"></td>
+    </tr>
+    <tr>
+     <td>21 - 22</td>
+       <td><input type="number" step="any" name="t22" id="t22"></td>
+    </tr>
+      <tr>
+     <td>22 - 23</td>
+      <td><input type="number" step="any" name="t23" id="t23"></td>
+    </tr>
+    <tr>
+     <td>23 - 24</td>
+       <td><input type="number" step="any" name="t24" id="t24"></td>
+    </tr>
+
+</table>
+<button type="submit" id="subBtn" onclick="subDispatch()">Submit</button>
+        <br>
+        <br>
+        </form>
+</div>
+
+<!--GENERATING A DISPATCH SCHEDULE-->
+<div id="gen_schedule">
+    <form action="{% url 'schedule' %}" method="POST" id="sched_form" name="sched_form">
+         {% csrf_token %}
+     <h1>Select Day:</h1>
+  <input type="radio" id="today" name="selkt" value="today">
+  <label for="today">Tomorrow</label>
+        <br>
+        <br>
+  <input type="radio" id="diff_date" name="selkt" value="diff_date">
+  <label for="diff_date">Pick Date</label>
+        <br>
+        <br>
+<!--        <label for="" id="date_l">Date:</label>-->
+        <input type="date" id="my_date" name="my_date" style="margin-left:5%;">
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+
+<!--VIEWING GENERATION REQUESTS FOR IPPs-->
+<div id="ipp_schedule">
+     <form action="{% url 'viewipp_schedule' %}" method="POST" id="ipp_schedule_form" name="ipp_schedule_form">
+            {% csrf_token %}
+         <label >IPP Name:</label>
+            <select name="ipp_list" id="ipp_list" >
+            <option selected disabled>Select IPP</option>
+        </select>
+         <label style="margin-left:5%;">Date:</label>
+        <input type="date" id="ipp_date" name="ipp_date" style="margin-left:3%;">
+         <br>
+         <br>
+         <button type="submit" style="width:30%; font-size:1.8em;">View</button>
+     </form>
+</div>
+
+<!--    VIEWING DECLARED GENERATION-->
+        <div id="ippview_declared">
+     <form action="{% url 'ippview_declared' %}" method="POST" id="ippview_declared_form" name="ippview_declared_form">
+        {% csrf_token %}
+          <label >IPP Name:</label>
+            <select name="ipp_list_1" id="ipp_list_1" >
+            <option selected disabled>Select IPP</option>
+        </select>
+         <br>
+     <h2>Select Day:</h2>
+  <input type="radio" id="today_1" name="selkt" value="today">
+  <label for="today">Tomorrow</label>
+        <br>
+        <br>
+  <input type="radio" id="diff_date_1" name="selkt" value="diff_date">
+  <label for="diff_date">Pick Date</label>
+        <br>
+        <br>
+<!--        <label for="" id="date_l1">Date:</label>-->
+<!--         <br>-->
+        <input type="date" id="my_date_1" name="my_date">
+        <button type="submit">View</button>
+<!--         <button type="submit" onclick="submitfunction()">View</button>-->
+<!--          <button type="submit" onclick="submitfunction()">Submit CSV files</button>-->
+<!--         <input type="submit" >-->
+     </form>
+</div>
+</body>
+</html>
+<style>
+    .login{width:99.2%;height:50px;background:#09ADE4;padding: 0px 10px 20px 10px;}
+
+    /*STYLING THE MIDDLE DIV*/
+#middle_div{height:50px;width:101.2%;background:#5685BF;padding-bottom:20px;text-align:center;}
+.middle_div ul {list-style-type: none;margin-left: 0em;margin-top:0;float:left;}
+.middle_div li {text-decoration: none;
+  float: left;
+}
+.middle_div li a {display: block;color: white;font-size:1.5em;text-align: center;padding: 16px;
+  text-decoration: none;margin-left:0;}
+.middle_div li a:hover{color:crimson;text-decoration: underline;}
+
+ #dispatch_all, #gen_schedule, #ipp_schedule{display:none;}
+    #dispatch_form{width:60%;margin-left:30%;border:3px solid black;margin:auto;}
+    #dispatch{width:100%;margin:auto;border:1px solid black;}
+    #dispatch th{font-size:1.7em;}
+    #dispatch th, td {border:1px solid black;margin:auto;}
+    #dispatch td{text-align:center;font-size:1.5em;}
+    #dispatch input, #dispatch_form input {font-size:1.2em;width: 100%;box-sizing: border-box;text-align: center; background-color: #F2F7F9;
+    margin-left:0em;}
+    #prod_details{text-align:center;padding-top:20px;}
+    #prod_details label{font-size:1.5em;}
+    #prod_details input{width:20%;font-size:1.5em;margin-left:20px;}
+button{font-size: 2em; width: 45%; padding: 5px; border: 2px solid green;
+    margin-left: 30%; margin-top: 1em;}
+    button:hover{color:white; background:crimson; border:crimson;}
+
+    #sched_form {width:30%;margin-left:30%;border:2px solid black;padding:20px 20px 20px 100px }
+    #sched_form label{font-size:1.5em;}
+    #sched_form input {font-size:1.8em;}
+    #ipp_schedule_form{width:60%; margin:auto;padding-top:30px;}
+    #ipp_schedule_form select, input{width:30%;font-size:1.5em;margin-left:3%;}
+    #ipp_schedule_form label {font-size:1.5em;}
+
+    /*IPP VIEW DECLARED GENERATION FORM*/
+    #ippview_declared{display:none;}
+    #ippview_declared_form {width:50%;margin-left:20%;border:2px solid black;padding:50px 20px 20px 100px; }
+    #ippview_declared_form select{font-size:1.8em;width:25%;}
+    #ippview_declared_form label{font-size:1.5em;}
+</style>
+<script>
+var d_all = document.getElementById('dispatch_all');
+var gen_s = document.getElementById('gen_schedule');
+var ipp_s = document.getElementById('ipp_schedule');
+var ipp_dec = document.getElementById('ippview_declared');
+
+//GETTING IPPS LIST FROM DJANGO
+var ipps = {{ dispatch_list |safe }};
+    //DECLARE DISPATCH
+    function benjamin(){
+    gen_s.style.display = 'none';
+    ipp_s.style.display = 'none';
+    ipp_dec.style.display = 'none';
+       if(d_all.style.display == 'block')
+         {d_all.style.display = 'none';}
+       else
+          {d_all.style.display = 'block';
+    }
+}
+
+    function subDispatch(){
+        const form_p = document.getElementById("dispatch_form");
+        var dispatch_ele = document.forms["dispatch_form"].getElementsByTagName("input");
+        form_p.addEventListener('submit',(e) =>{
+            for (i=0; i<dispatch_ele.length; i++){
+                if (dispatch_ele[i].value === ''){alert("Some Input Fields are Empty. Please ensure all form Inputs are filled out")
+                e.preventDefault()
+                break;
+             }
+              }
+        })
+        }
+
+
+function benjamin1(){                           //FUNCTION FOR SELECTING DATES
+      d_all.style.display = 'none';
+      ipp_s.style.display = 'none';
+      ipp_dec.style.display = 'none';
+       if(gen_s.style.display == 'block')
+         {gen_s.style.display = 'none';}
+       else
+         { gen_s.style.display = 'block';
+    }
+    ch_td = document.getElementById("today");
+ch_diff = document.getElementById("diff_date");
+form_rdbtn = document.getElementById("sched_form");
+
+dates = document.getElementById("my_date");
+dates.style.display = 'none';
+//dates_label = document.getElementById("date_l");
+//dates_label.style.display = 'none';
+
+ch_td.addEventListener('change',(e) =>{
+    if (ch_td.checked = true)
+   {dates.style.display = 'none';
+   //dates_label.style.display = 'none';
+   e.preventDefault()
+   }
+})
+ch_diff.addEventListener('change',(e) =>{
+    if (ch_diff.checked = true)
+   {dates.style.display = 'block';
+   //dates_label.style.display = 'block';
+   //console.log(ch_diff.value);
+   e.preventDefault()
+   }
+})
+    }
+function brinon(){
+d_all.style.display = 'none';
+ipp_s.style.display = 'block';
+gen_s.style.display = 'none';
+ipp_dec.style.display = 'none';
+var select = document.getElementById("ipp_list");
+for (var i = 0; i<ipps.length; i++){
+var option = document.createElement("OPTION"),
+txt = document.createTextNode(ipps[i]);
+option.appendChild(txt);
+select.insertBefore(option,select.lastChild);
+}
+}
+
+function kimera_benjamin(){
+d_all.style.display = 'none';
+ipp_s.style.display = 'none';
+gen_s.style.display = 'none';
+
+ if(ipp_dec.style.display == 'block')
+        ipp_dec.style.display = 'none';
+     else
+        ipp_dec.style.display = 'block';
+
+//POPULATING THE SELECT ELEMENT
+var select = document.getElementById("ipp_list_1");
+for (var i = 0; i<ipps.length; i++){
+var option = document.createElement("OPTION"),
+txt = document.createTextNode(ipps[i]);
+option.appendChild(txt);
+select.insertBefore(option,select.lastChild);
+}
+
+ch_td = document.getElementById("today_1");
+ch_diff = document.getElementById("diff_date_1");
+
+dates = document.getElementById("my_date_1");
+dates.style.display = 'none';
+//dates_label = document.getElementById("date_l1");
+//dates_label.style.display = 'none';
+
+ch_td.addEventListener('change',(e) =>{
+    if (ch_td.checked = true)
+   {dates.style.display = 'none';
+   //dates_label.style.display = 'none';
+   e.preventDefault()
+   }
+})
+
+ch_diff.addEventListener('change',(e) =>{
+    if (ch_diff.checked = true)
+   {dates.style.display = 'block';
+   //dates_label.style.display = 'block';
+   //console.log(ch_diff.value);
+   e.preventDefault()
+   }
+})
+  }
+
+//CHECKING VIEW DECLARED GENERATION FORM BEFORE SUBMISSION
+var new_form = document.getElementById("ippview_declared_form")
+var select = document.getElementById("ipp_list_1")
+var dated = document.getElementById("my_date_1")
+new_form.addEventListener('submit',(e) =>{
+console.log(select.value);
+if (select.value == 'Select IPP' )
+{alert("Please select an IPP")
+e.preventDefault()}
+
+else if (ch_diff.checked == false && ch_td.checked == false )
+{alert("Please Select at least one option")
+ch_diff.checked != true;
+  //ch_td.checked = false;
+  //form1.reset();
+  e.preventDefault()
+}
+
+if(ch_diff.checked == true && dated.value === '')
+{alert("Please Select date")
+e.preventDefault()
+}
+})
+
+//CHECKING IPP GENERATION REQUESTS FORM BEFORE SUBMISSION
+var new_form1 = document.getElementById("ipp_schedule_form")
+var select1 = document.getElementById("ipp_list")
+var dated1 = document.getElementById("ipp_date")
+new_form1.addEventListener('submit',(e) =>{
+console.log(select1.value);
+if (select1.value == 'Select IPP' ||dated1.value === ''  )
+{alert("Both Fields Must be Filled Out. Please fill out both field before submitting")
+e.preventDefault()}
+
+})
+
+//CHECKING DISPATCH SCHEDULE FORM
+var sch_form = document.getElementById("sched_form")
+var datedx = document.getElementById("my_date")
+sch_form.addEventListener('submit',(e) =>{
+ch_td = document.getElementById("today");
+ch_diff = document.getElementById("diff_date");
+if (ch_diff.checked == false && ch_td.checked == false )
+{alert("Please Select at least one option")
+  e.preventDefault()
+}
+if(ch_diff.checked == true && datedx.value === '')
+{alert("Please Select date")
+e.preventDefault()
+}
+})
+</script>

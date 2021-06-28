@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meter Summary</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+ <table id="meter_summary_t">
+            <thead>
+            <tr>
+                <th colspan="6" style="font-size:1.5em;padding:20px;">UETCL GRID METERS GRAND SUMMARY</th>
+            </tr>
+
+            </thead>
+            <tr>
+                <th><h3>MANUFACTURERS</h3></th>
+                <th>Elster</th>
+                <th>Cewe</th>
+                <th>Scheneider</th>
+                <th>Landis & Gyr</th>
+                <th>Manufacturers Total</th>
+
+            </tr>
+            <tbody>
+            <tr>
+                <th>Standalone Meters:</th>
+                <td><input type="text" name="elester_st" id="elester_st" value="{{total_standalone_meters.0}}"></td>
+                <td><input type="text" name="cewe_st" id="cewe_st" value="{{total_standalone_meters.1}}"></td>
+                <td><input type="text" name="scheneider_st" id="scheneider_st" value="{{total_standalone_meters.2}}"></td>
+                <td><input type="text" name="landis_gyr_st" id="landis_gyr_st" value="{{total_standalone_meters.3}}"></td>
+                <td><input type="text" name="total_st" id="total_st" value="{{total_stand}}"></td>
+
+            </tr>
+            <tr>
+                 <th>Substation Meters :</th>
+                <td><input type="text" name="elester_sub" id="elester_sub" value="{{total_substation_meters.0}}"></td>
+                <td><input type="text" name="cewe_sub" id="cewe_sub" value="{{total_substation_meters.1}}"></td>
+                <td><input type="text" name="scheneider_sub" id="scheneider_sub" value="{{total_substation_meters.2}}"></td>
+                <td><input type="text" name="landis_gyr_sub" id="landis_gyr_sub" value="{{total_substation_meters.3}}"></td>
+                <td><input type="text" name="total_sub" id="total_sub"  value="{{total_substation}}"></td>
+            </tr>
+              <tr>
+
+                <th>IPP Meters:</th>
+                   <td><input type="text" name="elester_ipp" id="elester_ipp" value="{{total_ipp_meters.0}}"></td>
+                <td><input type="text" name="cewe_ipp" id="cewe_ipp" value="{{total_ipp_meters.1}}"></td>
+                <td><input type="text" name="scheneider_ipp" id="scheneider_ipp" value="{{total_ipp_meters.2}}"></td>
+                <td><input type="text" name="landis_gyr_ipp" id="landis_gyr_ipp" value="{{total_ipp_meters.3}}"></td>
+                <td><input type="text" name="total_ipp" id="total_ipp" value="{{total_ipp}}" ></td>
+
+            </tr>
+              <tr>
+                <td style="bold:true;font-size:1.5em;text-align:center;" colspan="1">GRAND TOTAL</td>
+                 <th><input type="text" name="total_elster" id="total_elster" value="{{total_each_manu.0}}" style="font-size:1.7em;background:#C9D5E3;"></th>
+                  <td><input type="text" name="total_cewe" id="total_cewe" value="{{total_each_manu.1}}" style="font-size:1.7em;background:#C9D5E3;"></td>
+                  <td><input type="text" name="total_scheneider" id="total_scheneider" value="{{total_each_manu.2}}" style="font-size:1.7em;background:#C9D5E3;"></td>
+                  <td><input type="text" name="total_landis" id="total_landis" value="{{total_each_manu.3}}" style="font-size:1.7em;background:#C9D5E3;"></td>
+                <td><input type="text" name="total" id="total" value="{{overall}}" style="font-size:2em;background:#2BF355 ;"></td>
+            </tr>
+
+            </tbody>
+ </table>
+  <button type="submit" onclick="exportTableToCSV('UETCL Meter Summary.csv')">Export to csv</button>
+<br>
+<br>
+<br>
+
+ <table id="meter_summary_t1">
+            <thead>
+            <tr>
+                <th colspan="7" style="font-size:1.5em;padding:20px;">UETCL MAIN AND CHECK METERS SUMMARY</th>
+            </tr>
+
+            </thead>
+            <tr>
+                <th colspan="2"><h3>MANUFACTURERS</h3></th>
+                <th>Elster</th>
+                <th>Cewe</th>
+                <th>Scheneider</th>
+                <th>Landis & Gyr</th>
+                <th>Manufacturers Total</th>
+
+            </tr>
+            <tbody>
+            <tr>
+                <th rowspan="2">Standalone Meters:</th>
+                <td>Main:</td>
+                <td><input type="text" name="elester_st_mm" id="elester_st_mm" value="{{standalone_main_meters.0}}"></td>
+                <td><input type="text" name="cewe_st_mm" id="cewe_st_mm" value="{{standalone_main_meters.1}}"></td>
+                <td><input type="text" name="scheneider_st_mm" id="scheneider_st_mm" value="{{standalone_main_meters.2}}"></td>
+                <td><input type="text" name="landis_gyr_st_mm" id="landis_gyr_st_mm" value="{{standalone_main_meters.3}}"></td>
+                <td><input type="text" name="total_st_mm" id="total_st_mm" value="{{stand_main}}"></td>
+
+            </tr>
+              <tr>
+                <td>Check:</td>
+                <td><input type="text" name="elester_st_ch" id="elester_st_ch" value="{{standalone_check_meters.0}}"></td>
+                <td><input type="text" name="cewe_st_ch" id="cewe_st_ch" value="{{standalone_check_meters.1}}"></td>
+                <td><input type="text" name="scheneider_st_ch" id="scheneider_st_ch" value="{{standalone_check_meters.2}}"></td>
+                <td><input type="text" name="landis_gyr_st_ch" id="landis_gyr_st_ch" value="{{standalone_check_meters.3}}"></td>
+                <td><input type="text" name="total_st_ch" id="total_st_ch" value="{{stand_check}}"></td>
+
+            </tr>
+            <tr>
+                 <th rowspan="2">Substation Meters :</th>
+                <td>Main:</td>
+                <td><input type="text" name="elester_sub_mm" id="elester_sub_mm" value="{{substation_main_meters.0}}"></td>
+                <td><input type="text" name="cewe_sub_mm" id="cewe_sub_mm" value="{{substation_main_meters.1}}"></td>
+                <td><input type="text" name="scheneider_sub_mm" id="scheneider_sub_mm" value="{{substation_main_meters.2}}"></td>
+                <td><input type="text" name="landis_gyr_sub_mm" id="landis_gyr_sub_mm" value="{{substation_main_meters.3}}"></td>
+                <td><input type="text" name="total_sub_mm" id="total_sub_mm"  value="{{subs_sum_main}}"></td>
+            </tr>
+             <tr>
+
+                <td>Check:</td>
+                <td><input type="text" name="elester_sub_ch" id="elester_sub_ch" value="{{substation_check_meters.0}}"></td>
+                <td><input type="text" name="cewe_sub_ch" id="cewe_sub_ch" value="{{substation_check_meters.1}}"></td>
+                <td><input type="text" name="scheneider_sub_ch" id="scheneider_sub_ch" value="{{substation_check_meters.2}}"></td>
+                <td><input type="text" name="landis_gyr_sub_ch" id="landis_gyr_sub_ch" value="{{substation_check_meters.3}}"></td>
+                <td><input type="text" name="total_sub_ch" id="total_sub_ch"  value="{{sub_sum_check}}"></td>
+            </tr>
+              <tr>
+                <th rowspan="2">IPP Meters:</th>
+                  <td>Main:</td>
+                   <td><input type="text" name="elester_ipp_mm" id="elester_ipp_mm" value="{{ipp_main_meters.0}}"></td>
+                <td><input type="text" name="cewe_ipp_mm" id="cewe_ipp_mm" value="{{ipp_main_meters.1}}"></td>
+                <td><input type="text" name="scheneider_ipp_mm" id="scheneider_ipp_mm" value="{{ipp_main_meters.2}}"></td>
+                <td><input type="text" name="landis_gyr_ipp_mm" id="landis_gyr_ipp_mm" value="{{ipp_main_meters.3}}"></td>
+                <td><input type="text" name="total_ipp_mm" id="total_ipp_mm" value="{{ipp_sum_main}}" ></td>
+            </tr>
+             <tr>
+                  <td>Check:</td>
+                   <td><input type="text" name="elester_ipp_ch" id="elester_ipp_ch" value="{{ipp_check_meters.0}}"></td>
+                <td><input type="text" name="cewe_ipp_ch" id="cewe_ipp_ch" value="{{ipp_check_meters.1}}"></td>
+                <td><input type="text" name="scheneider_ipp_ch" id="scheneider_ipp_ch" value="{{ipp_check_meters.2}}"></td>
+                <td><input type="text" name="landis_gyr_ipp_ch" id="landis_gyr_ipp_ch" value="{{ipp_check_meters.3}}"></td>
+                <td><input type="text" name="total_ipp_ch" id="total_ipp_ch" value="{{ipp_sum_check}}" ></td>
+            </tr>
+              <tr>
+                <td style="bold:true;font-size:1.5em;text-align:center;" colspan="1" rowspan="2">TOTAL</td>
+                  <td>Main Total:</td>
+                 <th><input type="text" name="total_elster_mm" id="total_elster_mm" value="{{total_each_manu_main.0}}" style="font-size:1.7em;background:#C9D5E3;"></th>
+                  <td><input type="text" name="total_cewe_mm" id="total_cewe_mm" value="{{total_each_manu_main.1}}" style="font-size:1.7em;background:#C9D5E3;"></td>
+                  <td><input type="text" name="total_scheneider_mm" id="total_scheneider_mm" value="{{total_each_manu_main.2}}" style="font-size:1.7em;background:#C9D5E3;"></td>
+                  <td><input type="text" name="total_landis_mm" id="total_landis_mm" value="{{total_each_manu_main.3}}" style="font-size:1.7em;background:#C9D5E3;"></td>
+                <td><input type="text" name="total_mm" id="total_mm" value="{{main_sum_each}}" style="font-size:2em;background:#2BF355 ;"></td>
+            </tr>
+            <tr>
+                  <td>Check Total:</td>
+                 <th><input type="text" name="total_elster_ch" id="total_elster_ch" value="{{total_each_manu_check.0}}" style="font-size:1.7em;background:#C9D5E3;"></th>
+                  <td><input type="text" name="total_cewe_ch" id="total_cewe_ch" value="{{total_each_manu_check.1}}" style="font-size:1.7em;background:#C9D5E3;"></td>
+                  <td><input type="text" name="total_scheneider_ch" id="total_scheneider_ch" value="{{total_each_manu_check.2}}" style="font-size:1.7em;background:#C9D5E3;"></td>
+                  <td><input type="text" name="total_landis_ch" id="total_landis_ch" value="{{total_each_manu_check.3}}" style="font-size:1.7em;background:#C9D5E3;"></td>
+                <td><input type="text" name="total_ch" id="total_ch" value="{{check_sum_each}}" style="font-size:2em;background:#2BF355 ;"></td>
+            </tr>
+
+            </tbody>
+ </table>
+      <button type="submit" onclick="exportTableToCSV1('UETCL Main & Check Meter Summaries.csv')" value="">Export to csv</button>
+<br>
+<br>
+<br>
+
+<!--    METER REPLACEMENT SUMMARY TABLE-->
+
+    <div class="check_rep" id="check_rep" style="text-align:center;background-color: #cccccc;width:70%;border-radius:10px;margin-left:15%;">
+        <h2 style="">CHECKING ANNUAL METER REPLACEMENT REQUIREMENTS</h2>
+    <label for="nn" style="font-size:1.5em;margin-right:2em;">Select Year:</label>
+    <select name="year_sel" id="year_sel" style="width:20%;font-size:1.2em;border:2px solid black;background-color: #cccccc;">
+        <option value="">Select Year</option>
+        {% for m in m_year_list%}
+        <option value="{{m}}">{{m}}</option>
+        {% endfor %}
+    </select>
+        <br>
+        <br>
+         </div>
+
+
+        <br>
+        <br>
+    <div class="comb-div" id="comb-div">
+    <div class="table-div" id="table-div">
+ <table id="meter_summary_t2">
+            <thead>
+            <tr>
+                <th colspan="7" style="font-size:1.5em;padding:20px;">UETCL ENERGY METERS DUE FOR REPLACEMENT IN: <span id="p_id">{{this_year}}</span></th>
+            </tr>
+
+            </thead>
+            <tr>
+                <th colspan="2"><h3>MANUFACTURERS</h3></th>
+                <th>Elster</th>
+                <th>Cewe</th>
+                <th>Scheneider</th>
+                <th>Landis & Gyr</th>
+                <th>Manufacturers Total</th>
+
+            </tr>
+            <tbody>
+            <tr>
+                <th rowspan="2">Standalone Meters:</th>
+                <td>Main:</td>
+                <td><input type="text" name="elester_st_mm_rp" id="elester_st_mm_rp" value="{{stand_main_rep.0}}"></td>
+                <td><input type="text" name="cewe_st_mm_rp" id="cewe_st_mm_rp" value="{{stand_main_rep.1}}"></td>
+                <td><input type="text" name="scheneider_st_mm_rp" id="scheneider_st_mm_rp" value="{{stand_main_rep.2}}"></td>
+                <td><input type="text" name="landis_gyr_st_mm_rp" id="landis_gyr_st_mm_rp" value="{{stand_main_rep.3}}"></td>
+                <td><input type="text" name="total_st_mm_rp" id="total_st_mm_rp" value="{{sum_stand_mrp}}"></td>
+
+            </tr>
+              <tr>
+                <td>Check:</td>
+                <td><input type="text" name="elester_st_ch_rp" id="elester_st_ch_rp" value="{{stand_check_rep.0}}"></td>
+                <td><input type="text" name="cewe_st_ch_rp" id="cewe_st_ch_rp" value="{{stand_check_rep.1}}"></td>
+                <td><input type="text" name="scheneider_st_ch_rp" id="scheneider_st_ch_rp" value="{{stand_check_rep.2}}"></td>
+                <td><input type="text" name="landis_gyr_st_ch_rp" id="landis_gyr_st_ch_rp" value="{{stand_check_rep.3}}"></td>
+                <td><input type="text" name="total_st_ch_rp" id="total_st_ch_rp" value="{{sum_stand_crp}}"></td>
+
+            </tr>
+            <tr>
+                 <th rowspan="2">Substation Meters :</th>
+                <td>Main:</td>
+                <td><input type="text" name="elester_sub_mm_rp" id="elester_sub_mm_rp" value="{{sub_main_rep.0}}"></td>
+                <td><input type="text" name="cewe_sub_mm_rp" id="cewe_sub_mm_rp" value="{{sub_main_rep.1}}"></td>
+                <td><input type="text" name="scheneider_sub_mm_rp" id="scheneider_sub_mm_rp" value="{{sub_main_rep.2}}"></td>
+                <td><input type="text" name="landis_gyr_sub_mm_rp" id="landis_gyr_sub_mm_rp" value="{{sub_main_rep.3}}"></td>
+                <td><input type="text" name="total_sub_mm_rp" id="total_sub_mm_rp"  value="{{sum_sub_mrp}}"></td>
+            </tr>
+             <tr>
+
+                <td>Check:</td>
+                <td><input type="text" name="elester_sub_ch_rp" id="elester_sub_ch_rp" value="{{sub_check_rep.0}}"></td>
+                <td><input type="text" name="cewe_sub_ch_rp" id="cewe_sub_ch_rp" value="{{sub_check_rep.1}}"></td>
+                <td><input type="text" name="scheneider_sub_ch_rp" id="scheneider_sub_ch_rp" value="{{sub_check_rep.2}}"></td>
+                <td><input type="text" name="landis_gyr_sub_ch_rp" id="landis_gyr_sub_ch_rp" value="{{sub_check_rep.3}}"></td>
+                <td><input type="text" name="total_sub_ch_rp" id="total_sub_ch_rp"  value="{{sum_sub_crp}}"></td>
+            </tr>
+              <tr>
+                <th rowspan="2">IPP Meters:</th>
+                  <td>Main:</td>
+                   <td><input type="text" name="elester_ipp_mm_rp" id="elester_ipp_mm_rp" value="{{ipp_main_rep.0}}"></td>
+                <td><input type="text" name="cewe_ipp_mm_rp" id="cewe_ipp_mm_rp" value="{{ipp_main_rep.1}}"></td>
+                <td><input type="text" name="scheneider_ipp_mm_rp" id="scheneider_ipp_mm_rp" value="{{ipp_main_rep.2}}"></td>
+                <td><input type="text" name="landis_gyr_ipp_mm_rp" id="landis_gyr_ipp_mm_rp" value="{{ipp_main_rep.3}}"></td>
+                <td><input type="text" name="total_ipp_mm_rp" id="total_ipp_mm_rp" value="{{sum_ipp_mrp}}" ></td>
+            </tr>
+             <tr>
+                  <td>Check:</td>
+                   <td><input type="text" name="elester_ipp_ch_rp" id="elester_ipp_ch_rp" value="{{ipp_check_rep.0}}"></td>
+                <td><input type="text" name="cewe_ipp_ch_rp" id="cewe_ipp_ch_rp" value="{{ipp_check_rep.1}}"></td>
+                <td><input type="text" name="scheneider_ipp_ch_rp" id="scheneider_ipp_ch_rp" value="{{ipp_check_rep.2}}"></td>
+                <td><input type="text" name="landis_gyr_ipp_ch_rp" id="landis_gyr_ipp_ch_rp" value="{{ipp_check_rep.3}}"></td>
+                <td><input type="text" name="total_ipp_ch_rp" id="total_ipp_ch_rp" value="{{sum_ipp_crp}}" ></td>
+            </tr>
+              <tr>
+                <td style="bold:true;font-size:1.5em;text-align:center;" colspan="1" rowspan="2">TOTAL</td>
+                  <td>Main Total:</td>
+                 <th><input type="text" name="total_elster_mm_rp" id="total_elster_mm_rp" value="{{total_rp_main.0}}" style="font-size:1.7em;background:#C9D5E3;"></th>
+                  <td><input type="text" name="total_cewe_mm_rp" id="total_cewe_mm_rp" value="{{total_rp_main.1}}" style="font-size:1.7em;background:#C9D5E3;"></td>
+                  <td><input type="text" name="total_scheneider_mm_rp" id="total_scheneider_mm_rp" value="{{total_rp_main.2}}" style="font-size:1.7em;background:#C9D5E3;"></td>
+                  <td><input type="text" name="total_landis_mm_rp" id="total_landis_mm_rp" value="{{total_rp_main.3}}" style="font-size:1.7em;background:#C9D5E3;"></td>
+                <td><input type="text" name="total_mm_rp" id="total_mm_rp" value="{{sum_tt_rp_main}}" style="font-size:2em;background:#2BF355 ;"></td>
+            </tr>
+            <tr>
+                  <td>Check Total:</td>
+                 <th><input type="text" name="total_elster_ch_rp" id="total_elster_ch_rp" value="{{total_rp_check.0}}" style="font-size:1.7em;background:#C9D5E3;"></th>
+                  <td><input type="text" name="total_cewe_ch_rp" id="total_cewe_ch_rp" value="{{total_rp_check.1}}" style="font-size:1.7em;background:#C9D5E3;"></td>
+                  <td><input type="text" name="total_scheneider_ch_rp" id="total_scheneider_ch_rp" value="{{total_rp_check.2}}" style="font-size:1.7em;background:#C9D5E3;"></td>
+                  <td><input type="text" name="total_landis_ch_rp" id="total_landis_ch_rp" value="{{total_rp_check.3}}" style="font-size:1.7em;background:#C9D5E3;"></td>
+                <td><input type="text" name="total_ch_rp" id="total_ch_rp" value="{{sum_tt_rp_check}}" style="font-size:2em;background:#2BF355 ;"></td>
+            </tr>
+
+            </tbody>
+
+ </table>
+  <button type="submit" onclick="exportTableToCSV2('UETCL Meters Due For Replacement in 2021.csv')">Export to csv</button>
+        </div>
+
+<!--    END OF TABLE-->
+<!--        LOADING GIF-->
+                     <div class="ajax-loader" id="ajax-loader">
+  <img src="media/12a.gif" class="img-responsive" width="400px"/>
+<!--                         <H1>THIS IS MY DIV</H1>-->
+</div>
+        </div>
+
+
+
+</body>
+</html>
+
+
+<style>
+    body{background-color: #F2F7F9;}
+    table, th, td {
+  border: 1px solid black;
+}
+tr{height:20px;font-size:1.2em;}
+table{width:70%; margin:auto;}
+input {font-size:1.2em;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center; background-color: #F2F7F9;
+}
+
+select {width:100%; border:0; background-color: #F2F7F9;}
+button{font-size: 2em; width: 20%; padding: 5px; border: 2px solid green;
+    margin-left: 60%; margin-top: 1em;}
+    button:hover{color:white; background:crimson; border:crimson;}
+
+#p_id{color:#127C9F;text-decoration:underline;}
+#comb-div{ position: relative;}
+#ajax-loader{margin-left:35%;position:absolute;z-index:3;background:transparent;display:none;}
+#table-div{position: absolute;
+}
+</style>
+<script>
+
+function downloadCSV(csv, filename) {
+    var csvFile;
+    var downloadLink;
+    // CSV file
+    csvFile = new Blob([csv], {type: "text/csv"});
+    // Download link
+    downloadLink = document.createElement("a");
+    // File name
+    downloadLink.download = filename;
+    // Create a link to the file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+    // Hide download link
+    downloadLink.style.display = "none";
+    // Add the link to DOM
+    document.body.appendChild(downloadLink);
+    // Click download link
+    downloadLink.click();
+}
+    function exportTableToCSV(filename) {
+    var csv = [];
+    //var rows = document.querySelectorAll("table tr");
+    var rows = document.getElementById('meter_summary_t').querySelectorAll("table tr");
+
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll("td, th");
+
+    for (var j = 0; j < cols.length; j++) {
+      if (cols[j].children.length > 0) { //assuming your structure is always the same and the table only contains inputs as child elements inside a td
+        row.push(cols[j].firstChild.value);
+      } else {
+        row.push(cols[j].innerText);
+      }
+    }
+        csv.push(row.join(","));
+    }
+
+    // Download CSV file
+    downloadCSV(csv.join("\n"), filename);
+}
+
+ function exportTableToCSV1(filename) {
+    var csv = [];
+    //var rows = document.querySelectorAll("table tr");
+    var rows = document.getElementById('meter_summary_t1').querySelectorAll("table tr");
+
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll("td, th");
+
+    for (var j = 0; j < cols.length; j++) {
+      if (cols[j].children.length > 0) { //assuming your structure is always the same and the table only contains inputs as child elements inside a td
+        row.push(cols[j].firstChild.value);
+      } else {
+        row.push(cols[j].innerText);
+      }
+    }
+        csv.push(row.join(","));
+    }
+
+    // Download CSV file
+    downloadCSV(csv.join("\n"), filename);
+}
+function exportTableToCSV2(filename) {
+    var csv = [];
+    //var rows = document.querySelectorAll("table tr");
+    var rows = document.getElementById('meter_summary_t2').querySelectorAll("table tr");
+
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll("td, th");
+
+    for (var j = 0; j < cols.length; j++) {
+      if (cols[j].children.length > 0) { //assuming inputs as child elements inside a td
+        row.push(cols[j].firstChild.value);
+      }
+      else {
+        row.push(cols[j].innerText);
+      }
+    }
+        csv.push(row.join(","));
+    }
+
+    // Download CSV file
+    downloadCSV(csv.join("\n"), filename);
+}
+
+//AJAX CALL
+
+<!--CRSF TOKEN-->
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
+
+const request = new Request(
+<!--    /* URL */,-->
+    {headers: {'X-CSRFToken': csrftoken}}
+);
+//AJAX CALL TO UPDATE METER REPLACEMENT TABLE
+document.getElementById('year_sel').addEventListener("change", function() {
+  var selected_year = this.value;
+  console.log(selected_year);
+
+  //DISPLAYING LOADING GIFF
+var $loading = $('#ajax-loader').hide();
+//Attach the event handler to any element
+$(document)
+ .ajaxStart(function () {
+    //ajax request went so show the loading image
+     $loading.show();
+ })
+.ajaxStop(function () {
+   //got response so hide the loading image
+    $loading.hide();
+});
+
+  $.ajax({
+  "type":"POST",
+  "url":'meter_update',
+  "dataType":"json",
+  data:{'selected_year':selected_year,},
+  "headers": { "X-CSRFToken": getCookie("csrftoken") },
+  success:function(data) {
+            //your returned python list
+            new_list = data['finals']
+            <!--//Now, loop through the new_list and append these items wrapped in <li> tags to your ul. -->
+            console.log(new_list);
+//CHANGING YEAR
+document.getElementById("p_id").innerHTML = selected_year;
+
+  //POPULATING THE NODE TABLE:MAIN METERS
+document.getElementById("elester_st_mm_rp").value = new_list[0];
+document.getElementById("cewe_st_mm_rp").value = new_list[1];
+document.getElementById("scheneider_st_mm_rp").value = new_list[2];
+document.getElementById("landis_gyr_st_mm_rp").value = new_list[3];
+
+document.getElementById("elester_sub_mm_rp").value = new_list[4];
+document.getElementById("cewe_sub_mm_rp").value = new_list[5];
+document.getElementById("scheneider_sub_mm_rp").value = new_list[6];
+document.getElementById("landis_gyr_sub_mm_rp").value = new_list[7];
+
+document.getElementById("elester_ipp_mm_rp").value = new_list[8];
+document.getElementById("cewe_ipp_mm_rp").value = new_list[9];
+document.getElementById("scheneider_ipp_mm_rp").value = new_list[10];
+document.getElementById("landis_gyr_ipp_mm_rp").value = new_list[11];
+
+  //POPULATING THE NODE TABLE:CHECK METERS
+document.getElementById("elester_st_ch_rp").value = new_list[12];
+document.getElementById("cewe_st_ch_rp").value = new_list[13];
+document.getElementById("scheneider_st_ch_rp").value = new_list[14];
+document.getElementById("landis_gyr_st_ch_rp").value = new_list[15];
+
+document.getElementById("elester_sub_ch_rp").value = new_list[16];
+document.getElementById("cewe_sub_ch_rp").value = new_list[17];
+document.getElementById("scheneider_sub_ch_rp").value = new_list[18];
+document.getElementById("landis_gyr_sub_ch_rp").value = new_list[19];
+
+document.getElementById("elester_ipp_ch_rp").value = new_list[20];
+document.getElementById("cewe_ipp_ch_rp").value = new_list[21];
+document.getElementById("scheneider_ipp_ch_rp").value = new_list[22];
+document.getElementById("landis_gyr_ipp_ch_rp").value = new_list[23];
+
+//GETTING SUMS OF STAND,SUB,IPP FOR ALL METER MANUFACTURERS MAIN
+document.getElementById("total_st_mm_rp").value = new_list[24];
+document.getElementById("total_sub_mm_rp").value = new_list[25];
+document.getElementById("total_ipp_mm_rp").value = new_list[26];
+
+//GETTING SUMS OF STAND,SUB,IPP FOR ALL METER MANUFACTURERS CHECK
+document.getElementById("total_st_ch_rp").value = new_list[27];
+document.getElementById("total_sub_ch_rp").value = new_list[28];
+document.getElementById("total_ipp_ch_rp").value = new_list[29];
+
+
+//GETTING SUMS FOR VARIOUS METER TYPES MAIN
+var Elster_sum = new_list[0] + new_list[4] + new_list[8];
+var cewe_sum = new_list[1] + new_list[5] + new_list[9];
+var schneider_sum = new_list[2] + new_list[6] + new_list[10];
+var landis_sum = new_list[3] + new_list[7] + new_list[11];
+
+//GETTING SUMS FOR VARIOUS METER TYPES CHECK
+var Elster_ch_sum = new_list[12] + new_list[16] + new_list[20];
+var cewe_ch_sum = new_list[13] + new_list[17] + new_list[21];
+var schneider_ch_sum = new_list[14] + new_list[18] + new_list[22];
+var landis_ch_sum = new_list[15] + new_list[19] + new_list[23];
+
+var all_manu_main = Elster_sum + cewe_sum + schneider_sum + landis_sum
+var all_manu_check = Elster_ch_sum + cewe_ch_sum + schneider_ch_sum + landis_ch_sum
+
+//POPULATING TABLE WITH SUMS FOR THE VARIOUS METER TYPES FOR MAIN METERS
+document.getElementById("total_elster_mm_rp").value = Elster_sum;
+document.getElementById("total_cewe_mm_rp").value = cewe_sum;
+document.getElementById("total_scheneider_mm_rp").value = schneider_sum;
+document.getElementById("total_landis_mm_rp").value = landis_sum;
+document.getElementById("total_mm_rp").value = all_manu_main;
+
+//POPULATING TABLE WITH SUMS FOR THE VARIOUS METER TYPES FOR CHECK METERS
+document.getElementById("total_elster_ch_rp").value = Elster_ch_sum;
+document.getElementById("total_cewe_ch_rp").value = cewe_ch_sum;
+document.getElementById("total_scheneider_ch_rp").value = schneider_ch_sum;
+document.getElementById("total_landis_ch_rp").value = landis_ch_sum;
+document.getElementById("total_ch_rp").value = all_manu_check;
+
+
+  }
+
+  })
+
+  });
+
+</script>
+<!--
+cols = document.querySelectorAll("td input, the input");
+for (var j = 0; j < cols.length; j++){
+    row.push(cols[j].value);
+}-->

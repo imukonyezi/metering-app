@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <form action="{% url 'ipp_insert' %}" name="ipp_newmeter" id="ipp_newmeter" method="POST">
+        {% csrf_token %}
+        <table>
+            <thead>
+            <tr>
+                <th colspan="4"><h2>UETCL INDEPENDENT POWER PRODUCER METER</h2></th>
+            </tr>
+            <tr>
+                <th colspan="4" style="font-size:1.5em;">LOCATION:</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>Name of IPP:</td>
+                <td><input type="text" name="ipp_name" id="ipp_name" maxlength="20"></td>
+                <td>Installed Capacity (MW) :</td>
+                <td><input type="text" name="install_cap" id="install_cap" maxlength="15"></td>
+            </tr>
+              <tr>
+
+                <td>Generation Type:</td>
+                <td><input type="text" name="gen_type" id="gen_type" PLACEHOLDER="Eg solar,mini-hydro" maxlength="15"></td>
+
+                <td>District:</td>
+                <td><input type="text" name="ipp_dist" id="ipp_dist" maxlength="15"></td>
+            </tr>
+            <tr>
+                 <td>Region:</td>
+                <td><input type="text" name="ipp_region" id="ipp_region" maxlength="15"></td>
+                <td>Coordinates (X)</td>
+                <td><input type="text" name="ipp_cord_x" id="ipp_cord_x" maxlength="10"></td>
+            </tr>
+
+                 <td>Coordinates (Y)</td>
+                <td><input type="text" name="ipp_cord_y" id="ipp_cord_y" maxlength="10"></td>
+             <!--<td>Comments:</td>
+                <td><input type="text" name="comment" id="comment"  maxlength="35"></td>-->
+            </tr>
+            <tr>
+               <th colspan="4" style="font-size:1.2em;">FEEDER DETAILS AND DISTRIBUTOR:</th>
+            </tr>
+            <tr>
+                <td>Feeder Name:</td>
+                <td><input type="text" name="ipp_feeder" id="ipp_feeder" maxlength="15"></td>
+                <td>Feeder Voltage (kV):</td>
+                <td><input type="number" name="ipp_feeder_voltage" id="ipp_feeder_voltage" maxlength="5"></td>
+
+            </tr>
+            <tr>
+                <td>Connecting Substation</td>
+                <td><input type="text" name="ipp_conn" id="ipp_conn" maxlength="20"></td>
+                <td>Distributor:</td>
+                <td><input type="text" name="distributor" id="distributor" maxlength="15"></td>
+            </tr>
+            <tr>
+                <td>Comments:</td>
+                <td colspan="3"><input type="text"  name="comments" id="comments" maxlength="60"></td>
+
+            </tr>
+            <tr>
+               <th colspan="4" style="font-size:1.3em;">CT AND VT DETAILS:</th>
+            </tr>
+            <tr>
+                <td>CT Manufacturer</td>
+                <td><input type="text" name="ipp_ct_manu" id="ipp_ct_manu" maxlength="25"></td>
+                <td>Type:</td>
+                <td><input type="text" name="ipp_ct_type" id="ipp_ct_type" maxlength="15"></td>
+            </tr>
+
+            <tr>
+                <td>No. of Metering CT cores</td>
+                <td><input type="number" name="ipp_ct_cores" id="ipp_ct_cores" maxlength="3"></td>
+                <td>CT Core ratios</td>
+                <td><input type="text" name="ipp_ct_core_ratios" maxlength="20"></td>
+            </tr>
+            <tr>
+            <tr>
+                <td>CT core Used</td>
+                <td><input type="text" name="ipp_core_used" id="ipp_core_used" maxlength="10"></td>
+                <td>Accuracy class</td>
+                <td><input type="text" placeholder="Class of wired CT core" name="ipp_accuracy_class" id="ipp_accuracy_class" maxlength="5"></td>
+            </tr>
+            <tr>
+                <td>No. of Available spares</td>
+                <td><input type="text" name="ipp_avail_spares" id="ipp_avail_spares" maxlength="3"></td>
+                <td>Spares Class</td>
+                <td><input type="text" placeholder="avail spare CT cores" name="ipp_spares_class" id="ipp_spares_class" maxlength="10"></td>
+            </tr>
+             <tr>
+                <td>VT Manufacturer</td>
+                <td><input type="text" name="ipp_vt_manu" id="ipp_vt_manu" maxlength="15"></td>
+                <td>Type:</td>
+                <td><input type="text" name="ipp_VT_type" id="ipp_VT_type" maxlength="15"></td>
+            </tr>
+                   <tr>
+                        <td>VT Ratio</td>
+                <td><input type="text" name="ipp_vt_ratio" id="ipp_vt_ratio" maxlength="10"></td>
+                       <td>VT Accuracy</td>
+                <td><input type="text" name="ipp_vt_accuracy" id="ipp_vt_accuracy" maxlength="5"></td>
+                   </tr>
+
+               <th colspan="4" style="font-size:1.3em;">MAIN ENERGY METER DETAILS:</th>
+            </tr>
+            <tr>
+                <td>Manufacturer</td>
+                <td><input type="text" name="ipp_meter_manu" id="ipp_meter_manu" maxlength="15"></td>
+                <td>Type:</td>
+                <td><input type="text" name="ipp_meter_type" id="ipp_meter_type" maxlength="15"></td>
+            </tr>
+             <tr>
+                <td>Meter No</td>
+                <td><input type="text" name="ipp_meter_no" id="ipp_meter_no" maxlength="15"></td>
+                <td>Y.O.M</td>
+                <td><input type="text" placeholder="Year of Manufacture" name="ipp_YOM" id="ipp_YOM" maxlength="15"></td>
+            </tr>
+             <tr>
+                <td>Accuracy Class</td>
+                <td><input type="text" name="ipp_meter_acc_class" id="ipp_meter_acc_class" maxlength="5"></td>
+                  <td>No. Of Elements:</td>
+               <td colspan="1">
+          <select name="ipp_meter_elements" id="ipp_meter_elements" >
+            <option value="none" selected disabled hidden>No. Of Elements</option>
+              <option value="N/A">N/A</option>
+          <option value="3-Element">3-Element</option>
+          <option value="2-Element">2-Element</option>
+        </select>
+        </td>
+
+            </tr>
+            <tr>
+                  <td>Wired as:</td>
+               <td colspan="1">
+          <select name="ipp_meter_wire" id="ipp_meter_wire" >
+            <option value="none" selected disabled hidden>Type of wiring</option>
+              <option value="N/A">N/A</option>
+          <option value="3-Element">3-Element</option>
+          <option value="2-Element">2-Element</option>
+        </select>
+        </td>
+                <td>Installation date</td>
+                <td><input type="date" name="ipp_meter_install_date" id="ipp_meter_install_date" maxlength="12"></td>
+
+            </tr>
+             <tr>
+                  <td>Decommissioning date</td>
+                <td><input type="date" placeholder="Proposed Decomissioning date" name="ipp_meter_decom_date" id="ipp_meter_decom_date" maxlength="12"></td>
+                <td>Access</td>
+                   <td colspan="1">
+          <select name="ipp_meter_access" id="ipp_meter_access" >
+            <option value="none" selected disabled hidden>Meter Access</option>
+              <option value="N/A">N/A</option>
+          <option value="remote">Remote</option>
+          <option value="local">Local</option>
+        </select>
+                   </td>
+            <tr>
+                <td>IP Address</td>
+                <td><input type="text" name="ipp_ip_address" id="ipp_ip_address" maxlength="20"></td>
+             <td>Avail Interfaces</td>
+                <td><input type="text" placeholder="Ethernet,optical eye,VGA" name="ipp_meter_interfaces" id="ipp_meter_interfaces" maxlength="40"></td>
+            </tr>
+            <tr>
+                <td>Communication Protocols</td>
+                <td><input type="text" placeholder="Protocols eg GSM, TCP/IP" name="ipp_meter_comm_protocols" id="ipp_meter_comm_protocols" maxlength="20"></td>
+                <td>Protocol Used</td>
+                <td><input type="text" placeholder="Protocols eg GSM, TCP/IP" name="ipp_meter_protocol_used" id="ipp_meter_protocol_used" maxlength="10"></td>
+            </tr>
+
+             <tr>
+               <th colspan="4" style="font-size:1.3em;">CHECK METER DETAILS:</th>
+            </tr>
+            <tr>
+                <td>Manufacturer</td>
+                <td><input type="text" name="ipp_meter_manu_ch" id="ipp_meter_manu_ch" maxlength="15"></td>
+                <td>Type:</td>
+                <td><input type="text" name="ipp_meter_type_ch" id="ipp_meter_type_ch" maxlength="15"></td>
+            </tr>
+             <tr>
+                <td>Meter No</td>
+                <td><input type="text" name="ipp_meter_no_ch" id="ipp_meter_no_ch" maxlength="15"></td>
+                <td>Y.O.M</td>
+                <td><input type="text" placeholder="Year of Manufacture" name="ipp_YOM_ch" id="ipp_YOM_ch" maxlength="15"></td>
+            </tr>
+             <tr>
+                <td>Accuracy Class</td>
+                <td><input type="text" name="ipp_meter_acc_class_ch" id="ipp_meter_acc_class_ch" maxlength="5"></td>
+                  <td>No. Of Elements:</td>
+               <td colspan="1">
+          <select name="ipp_meter_elements_ch" id="ipp_meter_elements_ch" >
+            <option value="none" selected disabled hidden>No. Of Elements</option>
+              <option value="N/A">N/A</option>
+          <option value="3-Element">3-Element</option>
+          <option value="2-Element">2-Element</option>
+        </select>
+        </td>
+
+            </tr>
+            <tr>
+                      <td>Wired as:</td>
+               <td colspan="1">
+          <select name="ipp_meter_wire_ch" id="ipp_meter_wire_ch" >
+            <option value="none" selected disabled hidden>Type of wiring</option>
+              <option value="N/A">N/A</option>
+          <option value="3-Element">3-Element</option>
+          <option value="2-Element">2-Element</option>
+        </select>
+        </td>
+                <td>Installation date</td>
+                <td><input type="date" name="ipp_meter_install_date_ch" id="ipp_meter_install_date_ch" maxlength="12"></td>
+
+            </tr>
+             <tr>
+                  <td>Decommissioning date</td>
+                <td><input type="date" placeholder="Proposed Decomissioning date" name="ipp_meter_decom_date_ch" id="ipp_meter_decom_date_ch" maxlength="12"></td>
+                <td>Access</td>
+
+                   <td colspan="1">
+          <select name="ipp_meter_access_ch" id="ipp_meter_access_ch" >
+            <option value="none" selected disabled hidden>Meter Access</option>
+              <option value="N/A">N/A</option>
+          <option value="remote">Remote</option>
+          <option value="local">Local</option>
+        </select>
+                   </td>
+            </tr>
+            <tr>
+                <td>IP Address</td>
+                <td><input type="text" name="ipp_ip_address_ch" id="ipp_ip_address_ch" maxlength="20"></td>
+                 <td>Avail Interfaces</td>
+                <td><input type="text" placeholder="Ethernet,optical eye,VGA" name="ipp_meter_interfaces_ch" id="ipp_meter_interfaces_ch" maxlength="40"></td>
+            </tr>
+            <tr>
+                <td>Communication Protocols</td>
+                <td><input type="text" placeholder="Protocols eg GSM, TCP/IP" name="ipp_meter_comm_protocols_ch" id="ipp_meter_comm_protocols_ch" maxlength="15"></td>
+                <td>Protocol Used</td>
+                <td><input type="text" placeholder="Protocols eg GSM, TCP/IP" name="ipp_meter_protocol_used_ch" id="ipp_meter_protocol_used_ch" maxlength="10"></td>
+            </tr>
+            <tr>
+
+            </tbody>
+        </table>
+          <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
+
+<style>
+    body{background-color: #F2F7F9;}
+    table, th, td {
+  border: 1px solid black;
+}
+tr{height:20px;font-size:1.2em;}
+table{width:90%; margin:auto;}
+input {font-size:1.2em;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center; background-color: #F2F7F9;
+}
+
+select {width:100%; border:0; background-color: #F2F7F9;}
+button{font-size: 2em; width: 45%; padding: 5px; border: 2px solid green; border-radius: 20px;
+    margin-left: 30%; margin-top: 1em;}
+    button:hover{color:white; background:crimson; border:crimson;}
+    form{border:2px solid black; padding:20px}
+</style>
+<script>
+       document.querySelector("#ipp_newmeter tbody").addEventListener("keypress", function(event) {
+   if (event.target !== event.currentTarget) {
+        var clickedItem = event.target.id;
+        var Len2 = event.target.maxLength;
+        var len = event.target.value.length;
+        if (len >= Len2){alert("Maximum character length reached")}
+    }
+    event.stopPropagation();
+});
+</script>
